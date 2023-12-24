@@ -169,18 +169,6 @@ Certainly! We'd like to express our gratitude to the following individuals, proj
 
 Thank you to everyone who has played a role in the creation and evolution of this project! Your contributions are truly appreciated.
 
-## Contact Information
-
-If you have any questions or would like to collaborate, you can reach out to us through the following contact information:
-
-- **Email:** srivastavatanmay561@gmail.com
-- **Alternative Email:** yashsrivastava561@gmail.com
-- **Phone:** +91 6394729329, 
-- **Address:** Uttar Pradesh, Bahraich, 271801
-
-Feel free to connect with us, and we'll get back to you as soon as possible!
----
-
 ## Scrollspy Functionality
 
 This project incorporates a scrollspy feature to enhance the user experience. The scrollspy functionality is implemented using JavaScript to dynamically highlight the active navigation item based on the user's scroll position within the page.
@@ -217,4 +205,18 @@ window.addEventListener('scroll', function () {
 
 Feel free to customize the example code based on your specific implementation. This scrollspy feature contributes to a more user-friendly and interactive browsing experience.
 ---
+
+## Contact Information
+
+If you have any questions or would like to collaborate, you can reach out to us through the following contact information:
+
+- **Email:** srivastavatanmay561@gmail.com
+- **Alternative Email:** yashsrivastava561@gmail.com
+- **Phone:** +91 6394729329, 
+- **Address:** Uttar Pradesh, Bahraich, 271801
+
+Feel free to connect with us, and we'll get back to you as soon as possible!
+---
+
+
 
