@@ -175,12 +175,10 @@ If you have any questions or would like to collaborate, you can reach out to us 
 
 - **Email:** srivastavatanmay561@gmail.com
 - **Alternative Email:** yashsrivastava561@gmail.com
-- **Phone:** +91 6394729329, +91923508223
+- **Phone:** +91 6394729329, 
 - **Address:** Uttar Pradesh, Bahraich, 271801
 
 Feel free to connect with us, and we'll get back to you as soon as possible!
-Certainly! For your README file, you can include information about the scrollspy function implemented in your project. Below is a sample section you can include:
-
 ---
 
 ## Scrollspy Functionality
@@ -218,5 +216,5 @@ window.addEventListener('scroll', function () {
 ```
 
 Feel free to customize the example code based on your specific implementation. This scrollspy feature contributes to a more user-friendly and interactive browsing experience.
-
+---
 
