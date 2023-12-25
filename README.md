@@ -158,13 +158,10 @@ Certainly! We'd like to express our gratitude to the following individuals, proj
 3. **Open Source Community:**
    - Our project is built on the collective knowledge and efforts of the open-source community. We appreciate the countless developers who share their expertise and code.
 
-4. **Developers and Contributors:**
-   - We want to thank all the developers and contributors who have actively participated in the development and improvement of this project.
-
-5. **Online Resources:**
+4. **Online Resources:**
    - Various online tutorials, documentation, and forums have been valuable in shaping this project. We acknowledge the broader online community for its wealth of information.
 
-6. **Inspiration:**
+5. **Inspiration:**
    - The design and concept of this project have been inspired by various websites, UI/UX designs, and food-related platforms.
 
 Thank you to everyone who has played a role in the creation and evolution of this project! Your contributions are truly appreciated.
@@ -203,8 +200,6 @@ window.addEventListener('scroll', function () {
 
 ```
 
-Feel free to customize the example code based on your specific implementation. This scrollspy feature contributes to a more user-friendly and interactive browsing experience.
----
 
 ## Contact Information
 
