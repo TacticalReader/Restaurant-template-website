@@ -91,3 +91,67 @@ function fadeOut(){
 }
 
 window.onload = fadeOut;
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit', function (event) {
+            let valid = true;
+
+            // Validation for name
+            const nameInput = document.querySelector('input[type="text"][placeholder="enter your name"]');
+            if (!nameInput.value.trim()) {
+                valid = false;
+                alert('Please enter your name.');
+            }
+
+            // Validation for number
+            const numberInput = document.querySelector('input[type="number"][placeholder="enter your number"]');
+            if (!numberInput.value.trim()) {
+                valid = false;
+                alert('Please enter your number.');
+            }
+
+            // Validation for order
+            const orderInput = document.querySelector('input[type="text"][placeholder="enter food name"]');
+            if (!orderInput.value.trim()) {
+                valid = false;
+                alert('Please enter the food name for your order.');
+            }
+
+            // Validation for how much
+            const quantityInput = document.querySelector('input[type="number"][placeholder="how many orders"]');
+            if (!quantityInput.value.trim()) {
+                valid = false;
+                alert('Please enter the quantity.');
+            }
+
+            // Validation for date and time
+            const dateTimeInput = document.querySelector('input[type="datetime-local"]');
+            if (!dateTimeInput.value.trim()) {
+                valid = false;
+                alert('Please enter the date and time.');
+            }
+
+            // Validation for address
+            const addressTextarea = document.querySelector('textarea[placeholder="enter your address"]');
+            if (!addressTextarea.value.trim()) {
+                valid = false;
+                alert('Please enter your address.');
+            }
+
+            // Validation for message
+            const messageTextarea = document.querySelector('textarea[placeholder="enter your message"]');
+            if (!messageTextarea.value.trim()) {
+                valid = false;
+                alert('Please enter your message.');
+            }
+
+            if (!valid) {
+                event.preventDefault(); // Prevents the form from submitting if validation fails
+            }
+        });
+    });
+
+              
