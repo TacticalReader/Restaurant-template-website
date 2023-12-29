@@ -154,4 +154,10 @@ window.onload = fadeOut;
         });
     });
 
-              
+const phoneNumberInput = document.querySelector('input[type="tel"]');
+const phoneNumberRegexIndia = /^[6-9]\d{9}$/;
+
+if (!phoneNumberRegexIndia.test(phoneNumberInput.value.trim())) {
+    valid = false;
+    alert('Please enter a valid Indian phone number.');
+}
