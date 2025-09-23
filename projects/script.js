@@ -87,7 +87,7 @@ function loader(){
 }
 
 function fadeOut(){
-  setInterval(loader, 3000);
+  setInterval(loader, 1000);
 }
 
 window.onload = fadeOut;
@@ -161,3 +161,4 @@ if (!phoneNumberRegexIndia.test(phoneNumberInput.value.trim())) {
     valid = false;
     alert('Please enter a valid Indian phone number.');
 }
+
