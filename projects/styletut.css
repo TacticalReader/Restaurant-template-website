@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
 
 :root{
     --green:#21ae60;
@@ -144,14 +144,24 @@ header .flex .icons #menu-bars{
     top:0;
 }
 
+#search-form .search-input-group {
+    position: relative;
+    width: 50rem; /* Same width as original search-box */
+    display: flex; /* Make it a flex container for input and label */
+    align-items: center;
+    border-bottom: .1rem solid #fff; /* Move border to the group */
+    padding-bottom: 1rem; /* Adjust padding */
+}
+
 #search-form #search-box{
-    width:50rem;
-    border-bottom: .1rem solid #fff;
-    padding:1rem 0;
+    width: 100%; /* Fill available space */
+    padding: 1rem 0;
     color:#fff;
     font-size: 3rem;
     text-transform: none;
     background:none;
+    border: none; /* Remove individual border, it's on the group */
+    outline: none; /* Remove outline on focus */
 }
 
 #search-form #search-box::placeholder{
@@ -162,14 +172,53 @@ header .flex .icons #menu-bars{
     -webkit-appearance: none;
 }
 
-#search-form label{
+#search-form .search-input-group label{
     color:#fff;
     cursor:pointer;
     font-size: 3rem;
+    margin-left: 1rem; /* Space between input and icon */
 }
 
-#search-form label:hover{
+#search-form .search-input-group label:hover{
     color:var(--green);
+}
+
+#search-form .autocomplete-items {
+    position: absolute;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: none;
+    z-index: 99;
+    top: calc(100% + 1rem); /* Position below the search box group, with some space */
+    left: 0;
+    right: 0;
+    max-height: 20rem; /* Limit height and add scroll */
+    overflow-y: auto;
+    background-color: rgba(0,0,0,0.9); /* Dark background for suggestions */
+    border-radius: 0 0 .5rem .5rem; /* Rounded corners only at bottom */
+    box-shadow: var(--box-shadow);
+}
+
+#search-form .autocomplete-items div {
+    padding: 1rem;
+    cursor: pointer;
+    background-color: rgba(255,255,255,0.1); /* Slightly transparent white for items */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff; /* White text for suggestions */
+    font-size: 1.8rem;
+    text-transform: none;
+}
+
+#search-form .autocomplete-items div:last-child {
+    border-bottom: none;
+}
+
+#search-form .autocomplete-items div:hover {
+    background-color: rgba(255,255,255,0.2); /* Slightly brighter on hover */
+}
+
+#search-form .autocomplete-active {
+    background-color: var(--green) !important;
+    color: #ffffff !important;
 }
 
 #search-form #close{
@@ -311,7 +360,7 @@ header .flex .icons #menu-bars{
     flex:1 1 45rem;
 }
 
-.about .row .image img{ 
+.about .row .image img{
     width: 100%;
 }
 
@@ -488,8 +537,7 @@ header .flex .icons #menu-bars{
     color:var(--light-color);
 }
 
-.order form{
-    max-width:90rem;
+.order form{n    max-width:90rem;
     border-radius: .5rem;
     box-shadow: var(--box-shadow);
     border:.1rem solid rgba(0,0,0,.2);
@@ -628,15 +676,6 @@ header .flex .icons #menu-bars{
 
 
 
-
-
-
-
-
-
-
-
-
 /* media queries  */
 
 @media (max-width:991px){
@@ -684,7 +723,7 @@ header .flex .icons #menu-bars{
         background:#eee;
     }
 
-    #search-form #search-box{
+    #search-form .search-input-group{
         width:90%;
         margin:0 1rem;
     }
@@ -715,5 +754,3 @@ header .flex .icons #menu-bars{
     }
 
 }
-
-
