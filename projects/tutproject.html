@@ -51,8 +51,11 @@
 <!-- search form  -->
 
 <form action="" id="search-form">
-    <input type="search" placeholder="search here..." name="" id="search-box">
-    <label for="search-box" class="fas fa-search"></label>
+    <div class="search-input-group">
+        <input type="search" placeholder="search here..." name="search" id="search-box">
+        <label class="fas fa-search"></label>
+        <div id="autocomplete-list" class="autocomplete-items"></div>
+    </div>
     <i class="fas fa-times" id="close"></i>
 </form>
 
