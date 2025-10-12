@@ -88,7 +88,7 @@ function performSearch(searchTerm) {
 function autocomplete(inp, arr) {
     let currentFocus;
 
-    inp.addEventListener("input", function (e) {
+    inp.addEventListener("input", function () {
         let a, b, i, val = this.value;
         closeAllLists();
         if (!val) return false;
@@ -111,7 +111,7 @@ function autocomplete(inp, arr) {
                 b.innerHTML = beforeMatch + "<strong>" + match + "</strong>" + afterMatch;
                 b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
 
-                b.addEventListener("click", function (e) {
+                b.addEventListener("click", function () {
                     inp.value = this.getElementsByTagName("input")[0].value;
                     closeAllLists();
                     performSearch(inp.value);
@@ -243,9 +243,63 @@ function fadeOut() {
 window.onload = fadeOut;
 
 // =========================
+// Back to Top Button
+// =========================
+const backToTopBtn = document.getElementById('backToTopBtn');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) { // Show button after scrolling 300px
+        backToTopBtn.style.display = 'block';
+    } else {
+        backToTopBtn.style.display = 'none';
+    }
+});
+
+backToTopBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// =========================
 // Form Validation & Authentication
 // =========================
 document.addEventListener("DOMContentLoaded", function () {
+    // Dark Mode Toggle
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const htmlElement = document.documentElement;
+
+    function setTheme(theme) {
+        htmlElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        if (theme === 'dark') {
+            darkModeToggle.classList.remove('fa-moon');
+            darkModeToggle.classList.add('fa-sun');
+        } else {
+            darkModeToggle.classList.remove('fa-sun');
+            darkModeToggle.classList.add('fa-moon');
+        }
+    }
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        setTheme(savedTheme);
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        setTheme('dark');
+    } else {
+        setTheme('light');
+    }
+
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            setTheme(newTheme);
+        });
+    }
+
     const form = document.querySelector('form');
 
     form.addEventListener('submit', function (event) {
@@ -340,6 +394,25 @@ document.addEventListener("DOMContentLoaded", function () {
             alert('Account created for ' + name + ' (' + email + ')!');
             userFormContainer.classList.remove('active');
             this.reset();
+        });
+    }
+
+    // =========================
+    // Newsletter Subscription
+    // =========================
+    const newsletterBtn = document.querySelector('.newsletter-btn');
+    const newsletterEmailInput = document.querySelector('.email-input');
+
+    if (newsletterBtn && newsletterEmailInput) {
+        newsletterBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const email = newsletterEmailInput.value.trim();
+            if (email && email.includes('@') && email.includes('.')) {
+                alert(`Thank you for subscribing, ${email}!`);
+                newsletterEmailInput.value = '';
+            } else {
+                alert('Please enter a valid email address.');
+            }
         });
     }
 });
