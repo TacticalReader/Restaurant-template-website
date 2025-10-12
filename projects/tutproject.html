@@ -1,708 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Complete Responsive Food Website Design Tutorial</title>
-
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-
-    <!-- font awesome cdn link  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-    <!-- custom css file link  -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /><!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"><!-- custom css file link  -->
     <link rel="stylesheet" href="styletut.css">
-
 </head>
+
 <body>
-    
-<!-- header section starts -->
-
-<header>
-
-    <section class="flex">
-
-        <a href="#" class="logo"><i class="fas fa-utensils"></i> resto.</a>
-
-        <nav class="navbar">
-            <a class="active" href="#home">home</a>
-            <a href="#dishes">dishes</a>
-            <a href="#about">about</a>
-            <a href="#menu">menu</a>
-            <a href="#review">review</a>
-            <a href="#order">order</a>
-        </nav>
-    
-        <div class="icons">
-            
-            <a href="#" class="fas fa-user"></a>
-            <i class="fas fa-search" id="search-icon"></i>
-            <a href="#" class="fas fa-shopping-cart"></a>
-            <i class="fas fa-bars" id="menu-bars"></i>
-        </div>
-
-    </section>
-
-</header>
-
-<!-- header section ends-->
-
-<!-- search form  -->
-
-<form action="" id="search-form">
-    <div class="search-input-group">
-        <input type="search" placeholder="search here..." name="search" id="search-box">
-        <label class="fas fa-search"></label>
-        <div id="autocomplete-list" class="autocomplete-items"></div>
-    </div>
-    <i class="fas fa-times" id="close"></i>
-</form>
-
-<!-- home section starts  -->
-
-<div class="container">
-
-    <section class="home" id="home">
-
-        <div class="swiper home-slider">
-    
-            <div class="swiper-wrapper">
-    
-                <div class="swiper-slide slide">
-                    <div class="content">
-                        <span>our special dish</span>
-                        <h3>spicy noodles</h3>
-                        <p>Perfectly cooked noodles tossed with aromatic spices and fresh vegetables. A delightful blend of flavor and texture.</p>
-                        <a href="#" class="btn">order now</a>
-                    </div>
-                    <div class="image">
-                        <img src="home-img-1.png" alt="">
-                    </div>
-                </div>
-    
-                <div class="swiper-slide slide">
-                    <div class="content">
-                        <span>our special dish</span>
-                        <h3>fried chicken</h3>
-                        <p>Crispy golden fried chicken seasoned with our secret spice blend. Juicy on the inside, perfectly crunchy outside.</p>
-                        <a href="#" class="btn">order now</a>
-                    </div>
-                    <div class="image">
-                        <img src="home-img-2.png" alt="">
-                    </div>
-                </div>
-    
-                <div class="swiper-slide slide">
-                    <div class="content">
-                        <span>our special dish</span>
-                        <h3>hot pizza</h3>
-                        <p>Fresh baked pizza with melted cheese, premium toppings, and our signature sauce on a crispy thin crust.</p>
-                        <a href="#" class="btn">order now</a>
-                    </div>
-                    <div class="image">
-                        <img src="home-img-3.png" alt="">
-                    </div>
-                </div>
-    
-            </div>
-    
-            <div class="swiper-pagination"></div>
-    
-        </div>
-    
-    </section>
-
-</div>
-
-<!-- home section ends -->
-
-<!-- dishes section starts  -->
-
-<div class="container">
-
-    <section class="dishes" id="dishes">
-
-        <h3 class="sub-heading"> our dishes </h3>
-        <h1 class="heading"> popular dishes </h1>
-    
-        <div class="box-container">
-    
-            <div class="box">
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-eye"></a>
-                <img src="dish-1.png" alt="">
-                <h3>grilled burger</h3>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <span>$15.99</span>
-                <a href="#" class="btn">add to cart</a>
-            </div>
-    
-            <div class="box">
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-eye"></a>
-                <img src="dish-2.png" alt="">
-                <h3>pasta alfredo</h3>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <span>$18.99</span>
-                <a href="#" class="btn">add to cart</a>
-            </div>
-    
-            <div class="box">
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-eye"></a>
-                <img src="dish-3.png" alt="">
-                <h3>seafood platter</h3>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <span>$24.99</span>
-                <a href="#" class="btn">add to cart</a>
-            </div>
-    
-            <div class="box">
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-eye"></a>
-                <img src="dish-4.png" alt="">
-                <h3>chicken curry</h3>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <span>$16.99</span>
-                <a href="#" class="btn">add to cart</a>
-            </div>
-    
-            <div class="box">
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-eye"></a>
-                <img src="dish-5.png" alt="">
-                <h3>veggie salad</h3>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <span>$12.99</span>
-                <a href="#" class="btn">add to cart</a>
-            </div>
-    
-            <div class="box">
-                <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-eye"></a>
-                <img src="dish-6.png" alt="">
-                <h3>chocolate cake</h3>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <span>$8.99</span>
-                <a href="#" class="btn">add to cart</a>
-            </div>
-    
-        </div>
-    
-    </section>
-
-</div>
-
-<!-- dishes section ends -->
-
-<!-- about section starts  -->
-
-<div class="container">
-
-    <section class="about" id="about">
-
-        <h3 class="sub-heading"> about us </h3>
-        <h1 class="heading"> why choose us? </h1>
-    
-        <div class="row">
-    
-            <div class="image">
-                <img src="about-img.png" alt="">
-            </div>
-    
-            <div class="content">
-                <h3>best food in the country</h3>
-                <p>We take pride in serving authentic and delicious cuisine prepared with the finest ingredients. Our experienced chefs bring traditional flavors with a modern twist, creating memorable dining experiences for every guest.</p>
-                <p>From farm-fresh ingredients to time-honored recipes, every dish is crafted with passion and attention to detail that sets us apart.</p>
-                <div class="icons-container">
-                    <div class="icons">
-                        <i class="fas fa-shipping-fast"></i>
-                        <span>free delivery</span>
-                    </div>
-                    <div class="icons">
-                        <i class="fas fa-dollar-sign"></i>
-                        <span>easy payments</span>
-                    </div>
-                    <div class="icons">
-                        <i class="fas fa-headset"></i>
-                        <span>24/7 service</span>
-                    </div>
-                </div>
-                <a href="#" class="btn">learn more</a>
-            </div>
-    
-        </div>
-    
-    </section>
-
-</div>
-
-<!-- about section ends -->
-
-<!-- menu section starts  -->
-
-<div class="container">
-
-    <section class="menu" id="menu">
-
-        <h3 class="sub-heading"> our menu </h3>
-        <h1 class="heading"> today's speciality </h1>
-    
-        <div class="box-container">
-    
-            <div class="box">
-                <div class="image">
-                    <img src="menu-1.jpg" alt="">
-                    <a href="#" class="fas fa-heart"></a>
-                </div>
-                <div class="content">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <h3>beef steak</h3>
-                    <p>Tender grilled beef steak cooked to perfection with aromatic herbs.</p>
-                    <a href="#" class="btn">add to cart</a>
-                    <span class="price">$22.99</span>
-                </div>
-            </div>
-    
-            <div class="box">
-                <div class="image">
-                    <img src="menu-2.jpg" alt="">
-                    <a href="#" class="fas fa-heart"></a>
-                </div>
-                <div class="content">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <h3>salmon fillet</h3>
-                    <p>Fresh salmon fillet grilled with lemon butter and seasonal vegetables.</p>
-                    <a href="#" class="btn">add to cart</a>
-                    <span class="price">$19.99</span>
-                </div>
-            </div>
-    
-            <div class="box">
-                <div class="image">
-                    <img src="menu-3.jpg" alt="">
-                    <a href="#" class="fas fa-heart"></a>
-                </div>
-                <div class="content">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <h3>mushroom risotto</h3>
-                    <p>Creamy risotto with wild mushrooms and parmesan cheese.</p>
-                    <a href="#" class="btn">add to cart</a>
-                    <span class="price">$16.99</span>
-                </div>
-            </div>
-    
-            <div class="box">
-                <div class="image">
-                    <img src="menu-4.jpg" alt="">
-                    <a href="#" class="fas fa-heart"></a>
-                </div>
-                <div class="content">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <h3>lamb chops</h3>
-                    <p>Succulent lamb chops marinated in Mediterranean spices.</p>
-                    <a href="#" class="btn">add to cart</a>
-                    <span class="price">$25.99</span>
-                </div>
-            </div>
-    
-            <div class="box">
-                <div class="image">
-                    <img src="menu-5.jpg" alt="">
-                    <a href="#" class="fas fa-heart"></a>
-                </div>
-                <div class="content">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <h3>chicken wings</h3>
-                    <p>Crispy buffalo wings served with blue cheese dipping sauce.</p>
-                    <a href="#" class="btn">add to cart</a>
-                    <span class="price">$13.99</span>
-                </div>
-            </div>
-    
-            <div class="box">
-                <div class="image">
-                    <img src="menu-6.jpg" alt="">
-                    <a href="#" class="fas fa-heart"></a>
-                </div>
-                <div class="content">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <h3>shrimp scampi</h3>
-                    <p>Garlic butter shrimp served over linguine pasta with white wine.</p>
-                    <a href="#" class="btn">add to cart</a>
-                    <span class="price">$18.99</span>
-                </div>
-            </div>
-    
-            <div class="box">
-                <div class="image">
-                    <img src="menu-7.jpg" alt="">
-                    <a href="#" class="fas fa-heart"></a>
-                </div>
-                <div class="content">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <h3>caesar salad</h3>
-                    <p>Fresh romaine lettuce with croutons, parmesan and caesar dressing.</p>
-                    <a href="#" class="btn">add to cart</a>
-                    <span class="price">$11.99</span>
-                </div>
-            </div>
-    
-            <div class="box">
-                <div class="image">
-                    <img src="menu-8.jpg" alt="">
-                    <a href="#" class="fas fa-heart"></a>
-                </div>
-                <div class="content">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <h3>tiramisu</h3>
-                    <p>Classic Italian dessert with coffee-soaked ladyfingers and mascarpone.</p>
-                    <a href="#" class="btn">add to cart</a>
-                    <span class="price">$8.99</span>
-                </div>
-            </div>
-    
-            <div class="box">
-                <div class="image">
-                    <img src="menu-9.jpg" alt="">
-                    <a href="#" class="fas fa-heart"></a>
-                </div>
-                <div class="content">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <h3>lobster tail</h3>
-                    <p>Butter-poached lobster tail served with drawn butter and herbs.</p>
-                    <a href="#" class="btn">add to cart</a>
-                    <span class="price">$32.99</span>
-                </div>
-            </div>
-    
-        </div>
-    
-    </section>
-
-</div>
-
-<!-- menu section ends -->
-
-<!-- review section starts  -->
-
-<div class="container">
-
-    <section class="review" id="review">
-
-        <h3 class="sub-heading"> customer's review </h3>
-        <h1 class="heading"> what they say </h1>
-    
-        <div class="swiper review-slider">
-    
-            <div class="swiper-wrapper">
-    
-                <div class="swiper-slide slide">
-                    <i class="fas fa-quote-right"></i>
-                    <div class="user">
-                        <img src="pic-1.png" alt="">
-                        <div class="user-info">
-                            <h3>sarah johnson</h3>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p>Amazing dining experience! The food quality is outstanding and the service is exceptional. I particularly loved the salmon fillet - it was cooked to perfection. Will definitely be coming back with family and friends.</p>
-                </div>
-    
-                <div class="swiper-slide slide">
-                    <i class="fas fa-quote-right"></i>
-                    <div class="user">
-                        <img src="pic-2.png" alt="">
-                        <div class="user-info">
-                            <h3>mike chen</h3>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p>Best restaurant in town! The beef steak was incredibly tender and flavorful. The atmosphere is perfect for both casual dining and special occasions. Fast delivery service and friendly staff make it even better.</p>
-                </div>
-    
-                <div class="swiper-slide slide">
-                    <i class="fas fa-quote-right"></i>
-                    <div class="user">
-                        <img src="pic-3.png" alt="">
-                        <div class="user-info">
-                            <h3>emma davis</h3>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p>Excellent food and presentation! I ordered the mushroom risotto and it exceeded all expectations. The ingredients are fresh, portions are generous, and prices are very reasonable. Highly recommend this place!</p>
-                </div>
-    
-                <div class="swiper-slide slide">
-                    <i class="fas fa-quote-right"></i>
-                    <div class="user">
-                        <img src="pic-4.png" alt="">
-                        <div class="user-info">
-                            <h3>alex martinez</h3>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p>Outstanding culinary experience! The variety of dishes is impressive and everything tastes authentic. The tiramisu for dessert was absolutely divine. Great value for money and excellent customer service throughout.</p>
-                </div>
-    
-            </div>
-
-            <div class="swiper-pagination"></div>
-    
-        </div>
-        
-    </section>
-
-</div>
-
-<!-- review section ends -->
-
-<!-- order section starts  -->
-
-<div class="container">
-
-    <section class="order" id="order">
-
-        <h3 class="sub-heading"> order now </h3>
-        <h1 class="heading"> free and fast </h1>
-    
-        <form action="">
-    
-            <div class="inputBox">
-                <div class="input">
-                    <span>your name</span>
-                    <input type="text" placeholder="enter your name">
-                </div>
-                <div class="input">
-                    <span>your number</span>
-                    <input type="number" placeholder="enter your number">
-                </div>
-            </div>
-            <div class="inputBox">
-                <div class="input">
-                    <span>your order</span>
-                    <input type="text" placeholder="enter food name">
-                </div>
-                <div class="input">
-                    <span>additional food</span>
-                    <input type="test" placeholder="extra with food">
-                </div>
-            </div>
-            <div class="inputBox">
-                <div class="input">
-                    <span>how musch</span>
-                    <input type="number" placeholder="how many orders">
-                </div>
-                <div class="input">
-                    <span>date and time</span>
-                    <input type="datetime-local">
-                </div>
-            </div>
-            <div class="inputBox">
-                <div class="input">
-                    <span>your address</span>
-                    <textarea name="" placeholder="enter your address" id="" cols="30" rows="10"></textarea>
-                </div>
-                <div class="input">
-                    <span>your message</span>
-                    <textarea name="" placeholder="enter your message" id="" cols="30" rows="10"></textarea>
-                </div>
-            </div>
-    
-            <input type="submit" value="order now" class="btn">
-    
+    <!-- header section starts -->
+    <header>
+        <section class="flex"><a href="#" class="logo"><i class="fas fa-utensils"></i> resto.</a>
+            <nav class="navbar"><a class="active" href="#home">home</a><a href="#dishes">dishes</a><a href="#about">about</a><a href="#menu">menu</a><a href="#review">review</a><a href="#order">order</a></nav>
+            <div class="icons"><a href="#" class="fas fa-user"></a><i class="fas fa-search" id="search-icon"></i><a href="#" class="fas fa-shopping-cart"></a><i class="fas fa-bars" id="menu-bars"></i></div>
+        </section>
+    </header><!-- header section ends-->
+    <!-- search form  -->
+    <form action="" id="search-form">
+        <div class="search-input-group"><input type="search" placeholder="search here..." name="search" id="search-box"><label class="fas fa-search"></label>
+            <div id="autocomplete-list" class="autocomplete-items"></div>
+        </div><i class="fas fa-times" id="close"></i>
+    </form><!-- Login/Signup Form -->
+    <div class="user-form-container">
+        <div id="close-login-form" class="fas fa-times"></div>
+        <form action="" id="login-form">
+            <h3>login now</h3><input type="email" placeholder="your email" class="box" required><input type="password" placeholder="your password" class="box" required><input type="submit" value="login now" class="btn">
+            <p>forget password? <a href="#">click here</a></p>
+            <p>don't have an account? <a href="#" id="show-signup">create one</a></p>
         </form>
-    
-    </section>
-
-</div>
-
-<!-- order section ends -->
-
-<!-- footer section starts  -->
-
-<div class="container">
-
-    <section class="footer">
-
-        <div class="box-container">
-    
-            <div class="box">
-                <h3>locations</h3>
-                <a href="#">india</a>
-                <a href="#">japan</a>
-                <a href="#">russia</a>
-                <a href="#">USA</a>
-                <a href="#">france</a>
+        <form action="" id="signup-form" style="display: none;">
+            <h3>register now</h3><input type="text" placeholder="your name" class="box" required><input type="email" placeholder="your email" class="box" required><input type="password" placeholder="your password" class="box" required><input type="password" placeholder="confirm password" class="box" required><input type="submit" value="register now" class="btn">
+            <p>already have an account? <a href="#" id="show-login">login now</a></p>
+        </form>
+    </div><!-- home section starts  -->
+    <div class="container">
+        <section class="home" id="home">
+            <div class="swiper home-slider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide slide">
+                        <div class="content"><span>our special dish</span>
+                            <h3>spicy noodles</h3>
+                            <p>Perfectly cooked noodles tossed with aromatic spices and fresh vegetables. A delightful blend of flavor and texture.</p><a href="#" class="btn">order now</a>
+                        </div>
+                        <div class="image"><img src="home-img-1.png" alt=""></div>
+                    </div>
+                    <div class="swiper-slide slide">
+                        <div class="content"><span>our special dish</span>
+                            <h3>fried chicken</h3>
+                            <p>Crispy golden fried chicken seasoned with our secret spice blend. Juicy on the inside, perfectly crunchy outside.</p><a href="#" class="btn">order now</a>
+                        </div>
+                        <div class="image"><img src="home-img-2.png" alt=""></div>
+                    </div>
+                    <div class="swiper-slide slide">
+                        <div class="content"><span>our special dish</span>
+                            <h3>hot pizza</h3>
+                            <p>Fresh baked pizza with melted cheese, premium toppings, and our signature sauce on a crispy thin crust.</p><a href="#" class="btn">order now</a>
+                        </div>
+                        <div class="image"><img src="home-img-3.png" alt=""></div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
             </div>
-    
-            <div class="box">
-                <h3>quick links</h3>
-                <a href="#">home</a>
-                <a href="#">dishes</a>
-                <a href="#">about</a>
-                <a href="#">menu</a>
-                <a href="#">reivew</a>
-                <a href="#">order</a>
+        </section>
+    </div><!-- home section ends -->
+    <!-- dishes section starts  -->
+    <div class="container">
+        <section class="dishes" id="dishes">
+            <h3 class="sub-heading"> our dishes </h3>
+            <h1 class="heading"> popular dishes </h1>
+            <div class="box-container">
+                <div class="box"><a href="#" class="fas fa-heart"></a><a href="#" class="fas fa-eye"></a><img src="dish-1.png" alt="">
+                    <h3>grilled burger</h3>
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><span>$15.99</span><a href="#" class="btn">add to cart</a>
+                </div>
+                <div class="box"><a href="#" class="fas fa-heart"></a><a href="#" class="fas fa-eye"></a><img src="dish-2.png" alt="">
+                    <h3>pasta alfredo</h3>
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><span>$18.99</span><a href="#" class="btn">add to cart</a>
+                </div>
+                <div class="box"><a href="#" class="fas fa-heart"></a><a href="#" class="fas fa-eye"></a><img src="dish-3.png" alt="">
+                    <h3>seafood platter</h3>
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><span>$24.99</span><a href="#" class="btn">add to cart</a>
+                </div>
+                <div class="box"><a href="#" class="fas fa-heart"></a><a href="#" class="fas fa-eye"></a><img src="dish-4.png" alt="">
+                    <h3>chicken curry</h3>
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><span>$16.99</span><a href="#" class="btn">add to cart</a>
+                </div>
+                <div class="box"><a href="#" class="fas fa-heart"></a><a href="#" class="fas fa-eye"></a><img src="dish-5.png" alt="">
+                    <h3>veggie salad</h3>
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><span>$12.99</span><a href="#" class="btn">add to cart</a>
+                </div>
+                <div class="box"><a href="#" class="fas fa-heart"></a><a href="#" class="fas fa-eye"></a><img src="dish-6.png" alt="">
+                    <h3>chocolate cake</h3>
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><span>$8.99</span><a href="#" class="btn">add to cart</a>
+                </div>
             </div>
-    
-            <div class="box">
-                <h3>contact info</h3>
-                <a href="#">+91 6394729329</a>
-                <a href="#">+91923508223</a>
-                <a href="#">srivastavatanmay561@gmail.com</a>
-                <a href="#">yashsrivastava561@gmail.com</a>
+        </section>
+    </div><!-- dishes section ends -->
+    <!-- about section starts  -->
+    <div class="container">
+        <section class="about" id="about">
+            <h3 class="sub-heading"> about us </h3>
+            <h1 class="heading"> why choose us? </h1>
+            <div class="row">
+                <div class="image"><img src="about-img.png" alt=""></div>
+                <div class="content">
+                    <h3>best food in the country</h3>
+                    <p>We take pride in serving authentic and delicious cuisine prepared with the finest ingredients. Our experienced chefs bring traditional flavors with a modern twist, creating memorable dining experiences for every guest.</p>
+                    <p>From farm-fresh ingredients to time-honored recipes, every dish is crafted with passion and attention to detail that sets us apart.</p>
+                    <div class="icons-container">
+                        <div class="icons"><i class="fas fa-shipping-fast"></i><span>free delivery</span></div>
+                        <div class="icons"><i class="fas fa-dollar-sign"></i><span>easy payments</span></div>
+                        <div class="icons"><i class="fas fa-headset"></i><span>24/7 service</span></div>
+                    </div><a href="#" class="btn">learn more</a>
+                </div>
             </div>
-    
-            <div class="box">
-                <h3>follow us</h3>
-                <a href="#">facebook</a>
-                <a href="#">twitter</a>
-                <a href="#">instagram</a>
-                <a href="#">linkedin</a>
+        </section>
+    </div><!-- about section ends -->
+    <!-- menu section starts  -->
+    <div class="container">
+        <section class="menu" id="menu">
+            <h3 class="sub-heading"> our menu </h3>
+            <h1 class="heading"> today's speciality </h1>
+            <div class="box-container">
+                <div class="box">
+                    <div class="image"><img src="menu-1.jpg" alt=""><a href="#" class="fas fa-heart"></a></div>
+                    <div class="content">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        <h3>beef steak</h3>
+                        <p>Tender grilled beef steak cooked to perfection with aromatic herbs.</p><a href="#" class="btn">add to cart</a><span class="price">$22.99</span>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image"><img src="menu-2.jpg" alt=""><a href="#" class="fas fa-heart"></a></div>
+                    <div class="content">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        <h3>salmon fillet</h3>
+                        <p>Fresh salmon fillet grilled with lemon butter and seasonal vegetables.</p><a href="#" class="btn">add to cart</a><span class="price">$19.99</span>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image"><img src="menu-3.jpg" alt=""><a href="#" class="fas fa-heart"></a></div>
+                    <div class="content">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        <h3>mushroom risotto</h3>
+                        <p>Creamy risotto with wild mushrooms and parmesan cheese.</p><a href="#" class="btn">add to cart</a><span class="price">$16.99</span>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image"><img src="menu-4.jpg" alt=""><a href="#" class="fas fa-heart"></a></div>
+                    <div class="content">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        <h3>lamb chops</h3>
+                        <p>Succulent lamb chops marinated in Mediterranean spices.</p><a href="#" class="btn">add to cart</a><span class="price">$25.99</span>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image"><img src="menu-5.jpg" alt=""><a href="#" class="fas fa-heart"></a></div>
+                    <div class="content">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        <h3>chicken wings</h3>
+                        <p>Crispy buffalo wings served with blue cheese dipping sauce.</p><a href="#" class="btn">add to cart</a><span class="price">$13.99</span>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image"><img src="menu-6.jpg" alt=""><a href="#" class="fas fa-heart"></a></div>
+                    <div class="content">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        <h3>shrimp scampi</h3>
+                        <p>Garlic butter shrimp served over linguine pasta with white wine.</p><a href="#" class="btn">add to cart</a><span class="price">$18.99</span>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image"><img src="menu-7.jpg" alt=""><a href="#" class="fas fa-heart"></a></div>
+                    <div class="content">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        <h3>caesar salad</h3>
+                        <p>Fresh romaine lettuce with croutons, parmesan and caesar dressing.</p><a href="#" class="btn">add to cart</a><span class="price">$11.99</span>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image"><img src="menu-8.jpg" alt=""><a href="#" class="fas fa-heart"></a></div>
+                    <div class="content">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        <h3>tiramisu</h3>
+                        <p>Classic Italian dessert with coffee-soaked ladyfingers and mascarpone.</p><a href="#" class="btn">add to cart</a><span class="price">$8.99</span>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="image"><img src="menu-9.jpg" alt=""><a href="#" class="fas fa-heart"></a></div>
+                    <div class="content">
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        <h3>lobster tail</h3>
+                        <p>Butter-poached lobster tail served with drawn butter and herbs.</p><a href="#" class="btn">add to cart</a><span class="price">$32.99</span>
+                    </div>
+                </div>
             </div>
-    
-        </div>
-    
-        <div class="credit"> copyright @ 2023 by <span>mr.Tanmay Srivastava</span> </div>
-    
-    </section>
-
-</div>
-
-<!-- footer section ends -->
-
-<!-- loader part  -->
-<div class="loader-container">
-    <img src="loader.gif" alt="">
-</div>
-
-
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-<!-- custom js file link  -->
-<script src="script.js"></script>
-
+        </section>
+    </div><!-- menu section ends -->
+    <!-- review section starts  -->
+    <div class="container">
+        <section class="review" id="review">
+            <h3 class="sub-heading"> customer's review </h3>
+            <h1 class="heading"> what they say </h1>
+            <div class="swiper review-slider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide slide"><i class="fas fa-quote-right"></i>
+                        <div class="user"><img src="pic-1.png" alt="">
+                            <div class="user-info">
+                                <h3>sarah johnson</h3>
+                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                            </div>
+                        </div>
+                        <p>Amazing dining experience! The food quality is outstanding and the service is exceptional. I particularly loved the salmon fillet - it was cooked to perfection. Will definitely be coming back with family and friends.</p>
+                    </div>
+                    <div class="swiper-slide slide"><i class="fas fa-quote-right"></i>
+                        <div class="user"><img src="pic-2.png" alt="">
+                            <div class="user-info">
+                                <h3>mike chen</h3>
+                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                            </div>
+                        </div>
+                        <p>Best restaurant in town! The beef steak was incredibly tender and flavorful. The atmosphere is perfect for both casual dining and special occasions. Fast delivery service and friendly staff make it even better.</p>
+                    </div>
+                    <div class="swiper-slide slide"><i class="fas fa-quote-right"></i>
+                        <div class="user"><img src="pic-3.png" alt="">
+                            <div class="user-info">
+                                <h3>emma davis</h3>
+                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                            </div>
+                        </div>
+                        <p>Excellent food and presentation! I ordered the mushroom risotto and it exceeded all expectations. The ingredients are fresh, portions are generous, and prices are very reasonable. Highly recommend this place!</p>
+                    </div>
+                    <div class="swiper-slide slide"><i class="fas fa-quote-right"></i>
+                        <div class="user"><img src="pic-4.png" alt="">
+                            <div class="user-info">
+                                <h3>alex martinez</h3>
+                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                            </div>
+                        </div>
+                        <p>Outstanding culinary experience! The variety of dishes is impressive and everything tastes authentic. The tiramisu for dessert was absolutely divine. Great value for money and excellent customer service throughout.</p>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+        </section>
+    </div><!-- review section ends -->
+    <!-- order section starts  -->
+    <div class="container">
+        <section class="order" id="order">
+            <h3 class="sub-heading"> order now </h3>
+            <h1 class="heading"> free and fast </h1>
+            <form action="">
+                <div class="inputBox">
+                    <div class="input"><span>your name</span><input type="text" placeholder="enter your name"></div>
+                    <div class="input"><span>your number</span><input type="number" placeholder="enter your number"></div>
+                </div>
+                <div class="inputBox">
+                    <div class="input"><span>your order</span><input type="text" placeholder="enter food name"></div>
+                    <div class="input"><span>additional food</span><input type="test" placeholder="extra with food"></div>
+                </div>
+                <div class="inputBox">
+                    <div class="input"><span>how musch</span><input type="number" placeholder="how many orders"></div>
+                    <div class="input"><span>date and time</span><input type="datetime-local"></div>
+                </div>
+                <div class="inputBox">
+                    <div class="input"><span>your address</span><textarea name="" placeholder="enter your address" id="" cols="30" rows="10"></textarea></div>
+                    <div class="input"><span>your message</span><textarea name="" placeholder="enter your message" id="" cols="30" rows="10"></textarea></div>
+                </div><input type="submit" value="order now" class="btn">
+            </form>
+        </section>
+    </div><!-- order section ends -->
+    <!-- footer section starts  -->
+    <div class="container">
+        <section class="footer">
+            <div class="box-container">
+                <div class="box">
+                    <h3>locations</h3><a href="#">india</a><a href="#">japan</a><a href="#">russia</a><a href="#">USA</a><a href="#">france</a>
+                </div>
+                <div class="box">
+                    <h3>quick links</h3><a href="#">home</a><a href="#">dishes</a><a href="#">about</a><a href="#">menu</a><a href="#">reivew</a><a href="#">order</a>
+                </div>
+                <div class="box">
+                    <h3>contact info</h3><a href="#">+91 6394729329</a><a href="#">+91923508223</a><a href="#">srivastavatanmay561@gmail.com</a><a href="#">yashsrivastava561@gmail.com</a>
+                </div>
+                <div class="box">
+                    <h3>follow us</h3><a href="#">facebook</a><a href="#">twitter</a><a href="#">instagram</a><a href="#">linkedin</a>
+                </div>
+            </div>
+            <div class="credit"> copyright @ 2023 by <span>mr.Tanmay Srivastava</span> </div>
+        </section>
+    </div><!-- footer section ends -->
+    <!-- loader part  -->
+    <div class="loader-container"><img src="loader.gif" alt=""></div>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script><!-- custom js file link  -->
+    <script src="script.js"></script>
 </body>
+
 </html>
-
-
-
-
-
-
