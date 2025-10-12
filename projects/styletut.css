@@ -6,6 +6,29 @@
     --black: #192a56;
     --light-color: #666;
     --box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, 0.1);
+    /* New variables for easier theming */
+    --primary-bg: #fff;
+    --secondary-bg: #eee;
+    --primary-text: var(--black);
+    --secondary-text: var(--light-color);
+    --border-color: rgba(0, 0, 0, 0.2);
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --btn-bg: var(--black);
+    --btn-hover-bg: var(--green);
+    --btn-text: #fff;
+}
+
+/* Dark Mode */
+html[data-theme="dark"] {
+    --primary-bg: #1a1a1a;
+    --secondary-bg: #2c2c2c;
+    --primary-text: #f5f5f5;
+    --secondary-text: #aaa;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --btn-bg: var(--green);
+    --btn-hover-bg: var(--primary-text);
+    --btn-text: #fff;
 }
 
 * {
@@ -27,6 +50,11 @@ html {
     scroll-behavior: smooth;
 }
 
+body {
+    background: var(--primary-bg);
+    color: var(--primary-text);
+}
+
 section {
     padding: 4rem 2rem;
     max-width: 1200px;
@@ -34,7 +62,7 @@ section {
 }
 
 .container:nth-child(even) {
-    background: #eee;
+    background: var(--secondary-bg);
 }
 
 .sub-heading {
@@ -45,7 +73,7 @@ section {
 
 .heading {
     text-align: center;
-    color: var(--black);
+    color: var(--primary-text);
     font-size: 3rem;
     padding-bottom: 2rem;
     text-transform: uppercase;
@@ -55,15 +83,15 @@ section {
     margin-top: 1rem;
     display: inline-block;
     font-size: 1.7rem;
-    color: #fff;
-    background: var(--black);
+    color: var(--btn-text);
+    background: var(--btn-bg);
     border-radius: .5rem;
     cursor: pointer;
     padding: .8rem 3rem;
 }
 
 .btn:hover {
-    background: var(--green);
+    background: var(--btn-hover-bg);
     letter-spacing: .1rem;
 }
 
@@ -72,8 +100,8 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    background: #fff;
-    box-shadow: var(--box-shadow);
+    background: var(--primary-bg);
+    box-shadow: 0 .5rem 1.5rem var(--shadow-color);
     z-index: 1000;
 }
 
@@ -86,7 +114,7 @@ header .flex {
 }
 
 header .flex .logo {
-    color: var(--black);
+    color: var(--primary-text);
     font-size: 2.5rem;
     font-weight: bolder;
 }
@@ -99,7 +127,7 @@ header .flex .navbar a {
     font-size: 1.7rem;
     border-radius: .5rem;
     padding: .5rem 1.5rem;
-    color: var(--light-color);
+    color: var(--secondary-text);
 }
 
 header .flex .navbar a.active,
@@ -117,9 +145,9 @@ header .flex .icons a {
     width: 4.5rem;
     text-align: center;
     font-size: 1.7rem;
-    color: var(--black);
+    color: var(--primary-text);
     border-radius: 50%;
-    background: #eee;
+    background: var(--secondary-bg);
 }
 
 header .flex .icons i:hover,
@@ -158,7 +186,7 @@ header .flex .icons #menu-bars {
     display: flex;
     /* Make it a flex container for input and label */
     align-items: center;
-    border-bottom: .1rem solid #fff;
+    border-bottom: .1rem solid var(--primary-text);
     /* Move border to the group */
     padding-bottom: 1rem;
     /* Adjust padding */
@@ -168,7 +196,7 @@ header .flex .icons #menu-bars {
     width: 100%;
     /* Fill available space */
     padding: 1rem 0;
-    color: #fff;
+    color: var(--primary-text);
     font-size: 3rem;
     text-transform: none;
     background: none;
@@ -179,7 +207,7 @@ header .flex .icons #menu-bars {
 }
 
 #search-form #search-box::placeholder {
-    color: #eee;
+    color: var(--secondary-text);
 }
 
 #search-form #search-box::-webkit-search-cancel-button {
@@ -187,7 +215,7 @@ header .flex .icons #menu-bars {
 }
 
 #search-form .search-input-group label {
-    color: #fff;
+    color: var(--primary-text);
     cursor: pointer;
     font-size: 3rem;
     margin-left: 1rem;
@@ -200,7 +228,7 @@ header .flex .icons #menu-bars {
 
 #search-form .autocomplete-items {
     position: absolute;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--border-color);
     border-top: none;
     z-index: 99;
     top: calc(100% + 1rem);
@@ -210,20 +238,20 @@ header .flex .icons #menu-bars {
     max-height: 20rem;
     /* Limit height and add scroll */
     overflow-y: auto;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: var(--secondary-bg);
     /* Dark background for suggestions */
     border-radius: 0 0 .5rem .5rem;
     /* Rounded corners only at bottom */
-    box-shadow: var(--box-shadow);
+    box-shadow: 0 .5rem 1.5rem var(--shadow-color);
 }
 
 #search-form .autocomplete-items div {
     padding: 1rem;
     cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.05);
     /* Slightly transparent white for items */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--primary-text);
     /* White text for suggestions */
     font-size: 1.8rem;
     text-transform: none;
@@ -234,7 +262,7 @@ header .flex .icons #menu-bars {
 }
 
 #search-form .autocomplete-items div:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
     /* Slightly brighter on hover */
 }
 
@@ -245,7 +273,7 @@ header .flex .icons #menu-bars {
 
 #search-form #close {
     position: absolute;
-    color: #fff;
+    color: var(--primary-text);
     cursor: pointer;
     top: 2rem;
     right: 3rem;
@@ -278,12 +306,12 @@ header .flex .icons #menu-bars {
 }
 
 .home .home-slider .slide .content h3 {
-    color: var(--black);
+    color: var(--primary-text);
     font-size: 7rem;
 }
 
 .home .home-slider .slide .content p {
-    color: var(--light-color);
+    color: var(--secondary-text);
     font-size: 2.2rem;
     padding: .5rem 0;
     line-height: 1.5;
@@ -302,10 +330,10 @@ header .flex .icons #menu-bars {
 
 .dishes .box-container .box {
     padding: 2.5rem;
-    background: #fff;
+    background: var(--primary-bg);
     border-radius: .5rem;
-    border: .1rem solid rgba(0, 0, 0, .2);
-    box-shadow: var(--box-shadow);
+    border: .1rem solid var(--border-color);
+    box-shadow: 0 .5rem 1.5rem var(--shadow-color);
     position: relative;
     overflow: hidden;
     text-align: center;
@@ -315,13 +343,13 @@ header .flex .icons #menu-bars {
 .dishes .box-container .box .fa-eye {
     position: absolute;
     top: 1.5rem;
-    background: #eee;
+    background: var(--secondary-bg);
     border-radius: 50%;
     height: 5rem;
     width: 5rem;
     line-height: 5rem;
     font-size: 2rem;
-    color: var(--black);
+    color: var(--primary-text);
 }
 
 .dishes .box-container .box .fa-heart:hover,
@@ -352,7 +380,7 @@ header .flex .icons #menu-bars {
 }
 
 .dishes .box-container .box h3 {
-    color: var(--black);
+    color: var(--primary-text);
     font-size: 2.5rem;
 }
 
@@ -392,13 +420,13 @@ header .flex .icons #menu-bars {
 }
 
 .about .row .content h3 {
-    color: var(--black);
+    color: var(--primary-text);
     font-size: 4rem;
     padding: .5rem 0;
 }
 
 .about .row .content p {
-    color: var(--light-color);
+    color: var(--secondary-text);
     font-size: 1.5rem;
     padding: .5rem 0;
     line-height: 2;
@@ -413,9 +441,9 @@ header .flex .icons #menu-bars {
 }
 
 .about .row .content .icons-container .icons {
-    background: #eee;
+    background: var(--secondary-bg);
     border-radius: .5rem;
-    border: .1rem solid rgba(0, 0, 0, .2);
+    border: .1rem solid var(--border-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -431,7 +459,7 @@ header .flex .icons #menu-bars {
 
 .about .row .content .icons-container .icons span {
     font-size: 1.5rem;
-    color: var(--black);
+    color: var(--primary-text);
 }
 
 .menu .box-container {
@@ -442,10 +470,10 @@ header .flex .icons #menu-bars {
 }
 
 .menu .box-container .box {
-    background: #fff;
-    border: .1rem solid rgba(0, 0, 0, .2);
+    background: var(--primary-bg);
+    border: .1rem solid var(--border-color);
     border-radius: .5rem;
-    box-shadow: var(--box-shadow);
+    box-shadow: 0 .5rem 1.5rem var(--shadow-color);
 }
 
 .menu .box-container .box .image {
@@ -472,9 +500,9 @@ header .flex .icons #menu-bars {
     line-height: 5rem;
     text-align: center;
     font-size: 2rem;
-    background: #fff;
+    background: var(--primary-bg);
     border-radius: 50%;
-    color: var(--black);
+    color: var(--primary-text);
 }
 
 .menu .box-container .box .image .fa-heart:hover {
@@ -497,12 +525,12 @@ header .flex .icons #menu-bars {
 }
 
 .menu .box-container .box .content h3 {
-    color: var(--black);
+    color: var(--primary-text);
     font-size: 2.5rem;
 }
 
 .menu .box-container .box .content p {
-    color: var(--light-color);
+    color: var(--secondary-text);
     font-size: 1.6rem;
     padding: .5rem 0;
     line-height: 1.5;
@@ -516,11 +544,12 @@ header .flex .icons #menu-bars {
 
 .review .slide {
     padding: 2rem;
-    box-shadow: var(--box-shadow);
-    border: .1rem solid rgba(0, 0, 0, .2);
+    box-shadow: 0 .5rem 1.5rem var(--shadow-color);
+    border: .1rem solid var(--border-color);
     border-radius: .5rem;
     position: relative;
     margin-bottom: 4rem;
+    background: var(--primary-bg);
 }
 
 .review .slide .fa-quote-right {
@@ -528,7 +557,7 @@ header .flex .icons #menu-bars {
     top: 2rem;
     right: 2rem;
     font-size: 6rem;
-    color: #ccc;
+    color: var(--secondary-text);
 }
 
 .review .slide .user {
@@ -546,7 +575,7 @@ header .flex .icons #menu-bars {
 }
 
 .review .slide .user h3 {
-    color: var(--black);
+    color: var(--primary-text);
     font-size: 2rem;
     padding-bottom: .5rem;
 }
@@ -559,15 +588,15 @@ header .flex .icons #menu-bars {
 .review .slide p {
     font-size: 1.5rem;
     line-height: 1.8;
-    color: var(--light-color);
+    color: var(--secondary-text);
 }
 
 .order form {
     max-width: 90rem;
     border-radius: .5rem;
-    box-shadow: var(--box-shadow);
-    border: .1rem solid rgba(0, 0, 0, .2);
-    background: #fff;
+    box-shadow: 0 .5rem 1.5rem var(--shadow-color);
+    border: .1rem solid var(--border-color);
+    background: var(--primary-bg);
     padding: 1.5rem;
     margin: 0 auto;
     padding-top: 1rem;
@@ -587,16 +616,16 @@ header .flex .icons #menu-bars {
     display: block;
     padding: .5rem 0;
     font-size: 1.5rem;
-    color: var(--light-color);
+    color: var(--secondary-text);
 }
 
 .order form .inputBox .input input,
 .order form .inputBox .input textarea {
-    background: #eee;
+    background: var(--secondary-bg);
     border-radius: .5rem;
     padding: 1.4rem;
     font-size: 1.8rem;
-    color: var(--black);
+    color: var(--primary-text);
     text-transform: none;
     margin-bottom: 1rem;
     width: 100%;
@@ -625,7 +654,7 @@ header .flex .icons #menu-bars {
 .footer .box-container .box h3 {
     padding: .5rem 0;
     font-size: 2.5rem;
-    color: var(--black);
+    color: var(--primary-text);
     margin-bottom: 1.5rem;
 }
 
@@ -633,7 +662,7 @@ header .flex .icons #menu-bars {
     display: block;
     padding: .7rem 0;
     font-size: 1.6rem;
-    color: var(--light-color);
+    color: var(--secondary-text);
 }
 
 .footer .box-container .box a:hover {
@@ -645,11 +674,39 @@ header .flex .icons #menu-bars {
     color: var(--green);
 }
 
+/* Newsletter Styles */
+.footer .box-container .newsletter-box {
+    text-align: center;
+}
+
+.footer .box-container .newsletter-box p {
+    font-size: 1.5rem;
+    color: var(--secondary-text);
+    margin-bottom: 1rem;
+}
+
+.footer .box-container .newsletter-box .email-input {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1.6rem;
+    color: var(--primary-text);
+    background: var(--secondary-bg);
+    border-radius: .5rem;
+    margin-bottom: 1rem;
+    text-transform: none;
+}
+
+.footer .box-container .newsletter-box .newsletter-btn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.8rem;
+}
+
 .footer .credit {
     text-align: center;
-    border-top: .1rem solid rgba(0, 0, 0, .1);
+    border-top: .1rem solid var(--border-color);
     font-size: 2rem;
-    color: var(--black);
+    color: var(--primary-text);
     padding: .5rem;
     padding-top: 3rem;
     margin-top: 3rem;
@@ -667,7 +724,7 @@ header .flex .icons #menu-bars {
     height: 100%;
     width: 100%;
     z-index: 10000;
-    background: #fff;
+    background: var(--primary-bg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -704,18 +761,18 @@ header .flex .icons #menu-bars {
 }
 
 .user-form-container form {
-    background: #fff;
+    background: var(--primary-bg);
     border-radius: .5rem;
     padding: 2rem;
     text-align: center;
     width: 40rem;
-    box-shadow: var(--box-shadow);
+    box-shadow: 0 .5rem 1.5rem var(--shadow-color);
 }
 
 .user-form-container form h3 {
     font-size: 2.5rem;
     text-transform: uppercase;
-    color: var(--black);
+    color: var(--primary-text);
     margin-bottom: .7rem;
 }
 
@@ -723,17 +780,18 @@ header .flex .icons #menu-bars {
     width: 100%;
     padding: 1rem 1.2rem;
     font-size: 1.6rem;
-    color: var(--black);
+    color: var(--primary-text);
     margin: .7rem 0;
-    border: .1rem solid rgba(0, 0, 0, .1);
+    border: .1rem solid var(--border-color);
     border-radius: .5rem;
     text-transform: none;
+    background: var(--secondary-bg);
 }
 
 .user-form-container form p {
     padding: 1rem 0;
     font-size: 1.4rem;
-    color: var(--light-color);
+    color: var(--secondary-text);
 }
 
 .user-form-container form p a {
@@ -748,6 +806,29 @@ header .flex .icons #menu-bars {
     font-size: 5rem;
     color: #fff;
     cursor: pointer;
+}
+
+/* Back to Top Button */
+#backToTopBtn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    height: 5rem;
+    width: 5rem;
+    line-height: 5rem;
+    font-size: 2rem;
+    color: #fff;
+    background: var(--green);
+    border-radius: 50%;
+    text-align: center;
+    z-index: 999;
+    display: none; /* Hidden by default */
+    cursor: pointer;
+    box-shadow: 0 .5rem 1.5rem var(--shadow-color);
+}
+
+#backToTopBtn:hover {
+    background: var(--black);
 }
 
 /* media queries  */
@@ -775,9 +856,9 @@ header .flex .icons #menu-bars {
         top: 100%;
         left: 0;
         right: 0;
-        background: #fff;
-        border-top: .1rem solid rgba(0, 0, 0, .2);
-        border-bottom: .1rem solid rgba(0, 0, 0, .2);
+        background: var(--primary-bg);
+        border-top: .1rem solid var(--border-color);
+        border-bottom: .1rem solid var(--border-color);
         padding: 1rem;
         clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
     }
@@ -791,7 +872,7 @@ header .flex .icons #menu-bars {
         padding: 1.5rem;
         margin: 1rem;
         font-size: 2rem;
-        background: #eee;
+        background: var(--secondary-bg);
     }
 
     #search-form .search-input-group {
