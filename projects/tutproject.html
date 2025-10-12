@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
@@ -16,7 +16,7 @@
     <header>
         <section class="flex"><a href="#" class="logo"><i class="fas fa-utensils"></i> resto.</a>
             <nav class="navbar"><a class="active" href="#home">home</a><a href="#dishes">dishes</a><a href="#about">about</a><a href="#menu">menu</a><a href="#review">review</a><a href="#order">order</a></nav>
-            <div class="icons"><a href="#" class="fas fa-user"></a><i class="fas fa-search" id="search-icon"></i><a href="#" class="fas fa-shopping-cart"></a><i class="fas fa-bars" id="menu-bars"></i></div>
+            <div class="icons"><i class="fas fa-moon" id="darkModeToggle"></i><a href="#" class="fas fa-user"></a><i class="fas fa-search" id="search-icon"></i><a href="#" class="fas fa-shopping-cart"></a><i class="fas fa-bars" id="menu-bars"></i></div>
         </section>
     </header><!-- header section ends-->
     <!-- search form  -->
@@ -277,6 +277,12 @@
     <div class="container">
         <section class="footer">
             <div class="box-container">
+                 <div class="box newsletter-box">
+                    <h3>newsletter</h3>
+                    <p class="sub-heading">Subscribe for latest updates</p>
+                    <input type="email" placeholder="enter your email" class="email-input">
+                    <input type="submit" value="subscribe" class="btn newsletter-btn">
+                </div>
                 <div class="box">
                     <h3>locations</h3><a href="#">india</a><a href="#">japan</a><a href="#">russia</a><a href="#">USA</a><a href="#">france</a>
                 </div>
@@ -289,12 +295,14 @@
                 <div class="box">
                     <h3>follow us</h3><a href="#">facebook</a><a href="#">twitter</a><a href="#">instagram</a><a href="#">linkedin</a>
                 </div>
+               
             </div>
             <div class="credit"> copyright @ 2023 by <span>mr.Tanmay Srivastava</span> </div>
         </section>
     </div><!-- footer section ends -->
     <!-- loader part  -->
     <div class="loader-container"><img src="loader.gif" alt=""></div>
+    <a href="#" class="fas fa-arrow-up" id="backToTopBtn"></a>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script><!-- custom js file link  -->
     <script src="script.js"></script>
 </body>
