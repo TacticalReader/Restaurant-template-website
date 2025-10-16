@@ -43,7 +43,8 @@ const availableKeywords = [
   "spicy noodles", "fried chicken", "hot pizza", "grilled burger", "pasta alfredo",
   "seafood platter", "chicken curry", "veggie salad", "chocolate cake", "beef steak",
   "salmon fillet", "mushroom risotto", "lamb chops", "chicken wings", "shrimp scampi",
-  "caesar salad", "tiramisu", "lobster tail",
+  "caesar salad", "tiramisu", "lobster tail", "butter chicken", "palak paneer", "chole bhature",
+  "masala dosa", "idli sambar", "hyderabadi biryani",
   "home", "dishes", "about", "menu", "review", "order"
 ];
 
@@ -404,6 +405,28 @@ document.addEventListener("DOMContentLoaded", function () {
         alert('Please enter a valid email address.');
       }
     });
+  }
+
+  // =========================
+  // Menu Load More
+  // =========================
+  const loadMoreBtn = document.getElementById('loadMoreBtn');
+  if (loadMoreBtn) {
+    const extraMenuItems = document.querySelectorAll('.extra-menu-item');
+
+    if (extraMenuItems.length > 0) {
+      loadMoreBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        extraMenuItems.forEach(item => {
+          item.classList.remove('hidden');
+        });
+        // Hide the button's container after loading
+        loadMoreBtn.parentElement.style.display = 'none';
+      });
+    } else {
+      // If no extra items are found, hide the button container
+      loadMoreBtn.parentElement.style.display = 'none';
+    }
   }
 });
 
