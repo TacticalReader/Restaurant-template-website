@@ -1,64 +1,3 @@
-const menuData = [
-  { id: "menu-1", name: "beef steak", price: 22.99, image: "menu-1.jpg", description: "Tender grilled beef steak cooked to perfection with aromatic herbs.", category: "speciality" },
-  { id: "menu-2", name: "salmon fillet", price: 19.99, image: "menu-2.jpg", description: "Fresh salmon fillet grilled with lemon butter and seasonal vegetables.", category: "speciality" },
-  { id: "menu-3", name: "mushroom risotto", price: 16.99, image: "menu-3.jpg", description: "Creamy risotto with wild mushrooms and parmesan cheese.", category: "speciality" },
-  { id: "menu-4", name: "lamb chops", price: 25.99, image: "menu-4.jpg", description: "Succulent lamb chops marinated in Mediterranean spices.", category: "speciality" },
-  { id: "menu-5", name: "chicken wings", price: 13.99, image: "menu-5.jpg", description: "Crispy buffalo wings served with blue cheese dipping sauce.", category: "speciality" },
-  { id: "menu-6", name: "shrimp scampi", price: 18.99, image: "menu-6.jpg", description: "Garlic butter shrimp served over linguine pasta with white wine.", category: "speciality" },
-  { id: "menu-7", name: "caesar salad", price: 11.99, image: "menu-7.jpg", description: "Fresh romaine lettuce with croutons, parmesan and caesar dressing.", category: "speciality" },
-  { id: "menu-8", name: "tiramisu", price: 8.99, image: "menu-8.jpg", description: "Classic Italian dessert with coffee-soaked ladyfingers and mascarpone.", category: "speciality" },
-  { id: "menu-9", name: "lobster tail", price: 32.99, image: "menu-9.jpg", description: "Butter-poached lobster tail served with drawn butter and herbs.", category: "speciality" },
-  { id: "menu-10", name: "Butter Chicken", price: 17.99, image: "menu-10.jpg", description: "Tender chicken in a creamy, spiced tomato and butter sauce.", category: "extra" },
-  { id: "menu-11", name: "Palak Paneer", price: 15.99, image: "menu-11.jpg", description: "Indian cottage cheese cubes in a smooth, creamy spinach gravy.", category: "extra" },
-  { id: "menu-12", name: "Chole Bhature", price: 14.99, image: "menu-12.jpg", description: "Spicy chickpea curry served with fluffy, deep-fried bread.", category: "extra" },
-  { id: "menu-13", name: "Masala Dosa", price: 12.99, image: "menu-13.jpg", description: "Crispy rice crepe filled with a savory spiced potato mixture.", category: "extra" },
-  { id: "menu-14", name: "Idli Sambar", price: 10.99, image: "menu-14.jpg", description: "Steamed rice cakes served with a tangy lentil-vegetable stew.", category: "extra" },
-  { id: "menu-15", name: "Hyderabadi Biryani", price: 18.99, image: "menu-15.jpg", description: "Aromatic basmati rice and meat/veg cooked with saffron and spices.", category: "extra" }
-];
-
-const reviewData = [
-    {
-        name: "sarah johnson",
-        image: "pic-1.png",
-        date: "October 26, 2023",
-        text: "Amazing dining experience! The food quality is outstanding and the service is exceptional. I particularly loved the salmon fillet - it was cooked to perfection. Will definitely be coming back with family and friends."
-    },
-    {
-        name: "mike chen",
-        image: "pic-2.png",
-        date: "October 22, 2023",
-        text: "Best restaurant in town! The beef steak was incredibly tender and flavorful. The atmosphere is perfect for both casual dining and special occasions. Fast delivery service and friendly staff make it even better."
-    },
-    {
-        name: "emma davis",
-        image: "pic-3.png",
-        date: "October 19, 2023",
-        text: "Excellent food and presentation! I ordered the mushroom risotto and it exceeded all expectations. The ingredients are fresh, portions are generous, and prices are very reasonable. Highly recommend this place!"
-    },
-    {
-        name: "alex martinez",
-        image: "pic-4.png",
-        date: "October 15, 2023",
-        text: "Outstanding culinary experience! The variety of dishes is impressive and everything tastes authentic. The tiramisu for dessert was absolutely divine. Great value for money and excellent customer service throughout."
-    },
-    {
-        name: "david lee",
-        image: "pic-1.png",
-        date: "October 12, 2023",
-        text: "A hidden gem! The Chole Bhature was authentic and delicious. The service was quick and the staff was very friendly. It's my new go-to spot for Indian food. Can't wait to try more from their menu."
-    }
-];
-
-
-
-
-
-
-
-
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
 
   const app = {
@@ -168,12 +107,14 @@ document.addEventListener('DOMContentLoaded', () => {
         cartItemsContainer: document.getElementById('cart-items-container'),
         cartTotalPrice: document.getElementById('cart-total-price'),
         checkoutBtn: document.querySelector('.checkout-btn'),
+        clearCartBtn: document.getElementById('clear-cart-btn'),
         favoritesIcon: document.getElementById('favorites-icon'),
         favoritesCount: document.getElementById('favorites-count'),
         favoritesSidebar: document.getElementById('favorites-sidebar'),
         favoritesOverlay: document.getElementById('favorites-overlay'),
         closeFavoritesBtn: document.getElementById('close-favorites'),
         favoritesItemsContainer: document.getElementById('favorites-items-container'),
+        clearFavoritesBtn: document.getElementById('clear-favorites-btn'),
         reviewSliderWrapper: document.querySelector('.review-slider .swiper-wrapper'),
         lightbox: {
           overlay: document.querySelector('.lightbox-overlay'),
@@ -868,6 +809,7 @@ document.addEventListener('DOMContentLoaded', () => {
         app.dom.closeCartBtn.addEventListener('click', () => this.toggle());
         app.dom.cartOverlay.addEventListener('click', () => this.toggle());
         app.dom.checkoutBtn.addEventListener('click', () => this.checkout());
+        app.dom.clearCartBtn.addEventListener('click', () => this.clear());
         app.dom.cartItemsContainer.addEventListener('click', (e) => {
           if (e.target.classList.contains('cart-item-remove')) {
             const id = e.target.dataset.id;
@@ -963,10 +905,16 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         app.ui.showToast('Checkout successful! Thank you for your order.');
-        this.items = [];
-        this.render();
-        this.saveToStorage();
+        this.clear();
         this.toggle(); // Close the cart
+      },
+      clear() {
+        if (this.items.length > 0) {
+          this.items = [];
+          this.render();
+          this.saveToStorage();
+          app.ui.showToast('Cart has been cleared.');
+        }
       },
     },
 
@@ -981,6 +929,7 @@ document.addEventListener('DOMContentLoaded', () => {
         app.dom.favoritesIcon.addEventListener('click', (e) => { e.preventDefault(); this.toggle(); });
         app.dom.closeFavoritesBtn.addEventListener('click', () => this.toggle());
         app.dom.favoritesOverlay.addEventListener('click', () => this.toggle());
+        app.dom.clearFavoritesBtn.addEventListener('click', () => this.clear());
         app.dom.favoritesItemsContainer.addEventListener('click', (e) => {
           if (e.target.classList.contains('favorite-item-remove')) {
             const id = e.target.dataset.id;
@@ -1052,9 +1001,70 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         this.render();
       },
+      clear() {
+        if (this.items.length > 0) {
+          this.items = [];
+          // Also update the heart icons on the menu page
+          document.querySelectorAll('.add-to-favorites-btn.active').forEach(btn => btn.classList.remove('active'));
+          this.render();
+          this.saveToStorage();
+          app.ui.showToast('Favorites have been cleared.');
+        }
+      },
     },
   };
 
   app.init();
 
 });
+
+const menuData = [
+  { id: "menu-1", name: "beef steak", price: 22.99, image: "menu-1.jpg", description: "Tender grilled beef steak cooked to perfection with aromatic herbs.", category: "speciality" },
+  { id: "menu-2", name: "salmon fillet", price: 19.99, image: "menu-2.jpg", description: "Fresh salmon fillet grilled with lemon butter and seasonal vegetables.", category: "speciality" },
+  { id: "menu-3", name: "mushroom risotto", price: 16.99, image: "menu-3.jpg", description: "Creamy risotto with wild mushrooms and parmesan cheese.", category: "speciality" },
+  { id: "menu-4", name: "lamb chops", price: 25.99, image: "menu-4.jpg", description: "Succulent lamb chops marinated in Mediterranean spices.", category: "speciality" },
+  { id: "menu-5", name: "chicken wings", price: 13.99, image: "menu-5.jpg", description: "Crispy buffalo wings served with blue cheese dipping sauce.", category: "speciality" },
+  { id: "menu-6", name: "shrimp scampi", price: 18.99, image: "menu-6.jpg", description: "Garlic butter shrimp served over linguine pasta with white wine.", category: "speciality" },
+  { id: "menu-7", name: "caesar salad", price: 11.99, image: "menu-7.jpg", description: "Fresh romaine lettuce with croutons, parmesan and caesar dressing.", category: "speciality" },
+  { id: "menu-8", name: "tiramisu", price: 8.99, image: "menu-8.jpg", description: "Classic Italian dessert with coffee-soaked ladyfingers and mascarpone.", category: "speciality" },
+  { id: "menu-9", name: "lobster tail", price: 32.99, image: "menu-9.jpg", description: "Butter-poached lobster tail served with drawn butter and herbs.", category: "speciality" },
+  { id: "menu-10", name: "Butter Chicken", price: 17.99, image: "menu-10.jpg", description: "Tender chicken in a creamy, spiced tomato and butter sauce.", category: "extra" },
+  { id: "menu-11", name: "Palak Paneer", price: 15.99, image: "menu-11.jpg", description: "Indian cottage cheese cubes in a smooth, creamy spinach gravy.", category: "extra" },
+  { id: "menu-12", name: "Chole Bhature", price: 14.99, image: "menu-12.jpg", description: "Spicy chickpea curry served with fluffy, deep-fried bread.", category: "extra" },
+  { id: "menu-13", name: "Masala Dosa", price: 12.99, image: "menu-13.jpg", description: "Crispy rice crepe filled with a savory spiced potato mixture.", category: "extra" },
+  { id: "menu-14", name: "Idli Sambar", price: 10.99, image: "menu-14.jpg", description: "Steamed rice cakes served with a tangy lentil-vegetable stew.", category: "extra" },
+  { id: "menu-15", name: "Hyderabadi Biryani", price: 18.99, image: "menu-15.jpg", description: "Aromatic basmati rice and meat/veg cooked with saffron and spices.", category: "extra" }
+];
+
+const reviewData = [
+    {
+        name: "sarah johnson",
+        image: "pic-1.png",
+        date: "October 26, 2023",
+        text: "Amazing dining experience! The food quality is outstanding and the service is exceptional. I particularly loved the salmon fillet - it was cooked to perfection. Will definitely be coming back with family and friends."
+    },
+    {
+        name: "mike chen",
+        image: "pic-2.png",
+        date: "October 22, 2023",
+        text: "Best restaurant in town! The beef steak was incredibly tender and flavorful. The atmosphere is perfect for both casual dining and special occasions. Fast delivery service and friendly staff make it even better."
+    },
+    {
+        name: "emma davis",
+        image: "pic-3.png",
+        date: "October 19, 2023",
+        text: "Excellent food and presentation! I ordered the mushroom risotto and it exceeded all expectations. The ingredients are fresh, portions are generous, and prices are very reasonable. Highly recommend this place!"
+    },
+    {
+        name: "alex martinez",
+        image: "pic-4.png",
+        date: "October 15, 2023",
+        text: "Outstanding culinary experience! The variety of dishes is impressive and everything tastes authentic. The tiramisu for dessert was absolutely divine. Great value for money and excellent customer service throughout."
+    },
+    {
+        name: "david lee",
+        image: "pic-1.png",
+        date: "October 12, 2023",
+        text: "A hidden gem! The Chole Bhature was authentic and delicious. The service was quick and the staff was very friendly. It's my new go-to spot for Indian food. Can't wait to try more from their menu."
+    }
+];
