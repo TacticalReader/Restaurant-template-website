@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
       this.setupGlobalEventListeners();
       this.navbar.init();
       this.sliders.init();
+      this.reviews.init();
       this.search.init();
       this.loader.init();
       this.ui.init();
@@ -57,6 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
         closeCartBtn: document.getElementById('close-cart'),
         cartItemsContainer: document.getElementById('cart-items-container'),
         cartTotalPrice: document.getElementById('cart-total-price'),
+        checkoutBtn: document.querySelector('.checkout-btn'),
+        reviewSliderWrapper: document.querySelector('.review-slider .swiper-wrapper'),
         lightbox: {
           overlay: document.querySelector('.lightbox-overlay'),
           image: document.querySelector('.lightbox-image'),
@@ -303,7 +306,16 @@ document.addEventListener('DOMContentLoaded', () => {
           pagination: { el: ".swiper-pagination", clickable: true },
           loop: true,
         });
+      },
+    },
 
+    // =========================
+    // REVIEWS MODULE
+    // =========================
+    reviews: {
+      init() {
+        this.renderReviews();
+        // Initialize swiper after reviews are rendered
         new Swiper(".review-slider", {
           spaceBetween: 20,
           centeredSlides: true,
@@ -318,6 +330,32 @@ document.addEventListener('DOMContentLoaded', () => {
           },
         });
       },
+      renderReviews() {
+        if (app.dom.reviewSliderWrapper) {
+          app.dom.reviewSliderWrapper.innerHTML = reviewData.map(review => this.createReviewHTML(review)).join('');
+        }
+      },
+      createReviewHTML(review) {
+        return `
+          <div class="swiper-slide slide">
+            <i class="fas fa-quote-right"></i>
+            <div class="user">
+              <img src="${review.image}" alt="Customer ${review.name}">
+              <div class="user-info">
+                <h3>${review.name}</h3>
+                <div class="stars">
+                  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="review-date">
+                  <i class="fas fa-calendar-alt"></i>
+                  <span>${review.date}</span>
+                </div>
+              </div>
+            </div>
+            <p>${review.text}</p>
+          </div>
+        `;
+      }
     },
 
     // =========================
@@ -692,6 +730,7 @@ document.addEventListener('DOMContentLoaded', () => {
         app.dom.cartIcon.addEventListener('click', () => this.toggle());
         app.dom.closeCartBtn.addEventListener('click', () => this.toggle());
         app.dom.cartOverlay.addEventListener('click', () => this.toggle());
+        app.dom.checkoutBtn.addEventListener('click', () => this.checkout());
         app.dom.cartItemsContainer.addEventListener('click', (e) => {
           if (e.target.classList.contains('cart-item-remove')) {
             const id = e.target.dataset.id;
@@ -776,6 +815,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         this.render();
       },
+      checkout() {
+        if (this.items.length === 0) {
+            app.ui.showToast('Your cart is empty.', 'error');
+            return;
+        }
+        app.ui.showToast('Checkout successful! Thank you for your order.');
+        this.items = [];
+        this.render();
+        this.saveToStorage();
+        this.toggle(); // Close the cart
+      },
     },
   };
 
@@ -801,4 +851,37 @@ const menuData = [
   { id: "menu-13", name: "Masala Dosa", price: 12.99, image: "menu-13.jpg", description: "Crispy rice crepe filled with a savory spiced potato mixture.", category: "extra" },
   { id: "menu-14", name: "Idli Sambar", price: 10.99, image: "menu-14.jpg", description: "Steamed rice cakes served with a tangy lentil-vegetable stew.", category: "extra" },
   { id: "menu-15", name: "Hyderabadi Biryani", price: 18.99, image: "menu-15.jpg", description: "Aromatic basmati rice and meat/veg cooked with saffron and spices.", category: "extra" }
+];
+
+const reviewData = [
+    {
+        name: "sarah johnson",
+        image: "pic-1.png",
+        date: "October 26, 2023",
+        text: "Amazing dining experience! The food quality is outstanding and the service is exceptional. I particularly loved the salmon fillet - it was cooked to perfection. Will definitely be coming back with family and friends."
+    },
+    {
+        name: "mike chen",
+        image: "pic-2.png",
+        date: "October 22, 2023",
+        text: "Best restaurant in town! The beef steak was incredibly tender and flavorful. The atmosphere is perfect for both casual dining and special occasions. Fast delivery service and friendly staff make it even better."
+    },
+    {
+        name: "emma davis",
+        image: "pic-3.png",
+        date: "October 19, 2023",
+        text: "Excellent food and presentation! I ordered the mushroom risotto and it exceeded all expectations. The ingredients are fresh, portions are generous, and prices are very reasonable. Highly recommend this place!"
+    },
+    {
+        name: "alex martinez",
+        image: "pic-4.png",
+        date: "October 15, 2023",
+        text: "Outstanding culinary experience! The variety of dishes is impressive and everything tastes authentic. The tiramisu for dessert was absolutely divine. Great value for money and excellent customer service throughout."
+    },
+    {
+        name: "david lee",
+        image: "pic-1.png",
+        date: "October 12, 2023",
+        text: "A hidden gem! The Chole Bhature was authentic and delicious. The service was quick and the staff was very friendly. It's my new go-to spot for Indian food. Can't wait to try more from their menu."
+    }
 ];
