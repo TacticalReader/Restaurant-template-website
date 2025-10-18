@@ -122,18 +122,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // SEARCH MODULE
     // =========================
     search: {
-      availableKeywords: [
-        "spicy noodles", "fried chicken", "hot pizza", "grilled burger", "pasta alfredo",
-        "seafood platter", "chicken curry", "veggie salad", "chocolate cake", "beef steak",
-        "salmon fillet", "mushroom risotto", "lamb chops", "chicken wings", "shrimp scampi",
-        "caesar salad", "tiramisu", "lobster tail", "butter chicken", "palak paneer", "chole bhature",
-        "masala dosa", "idli sambar", "hyderabadi biryani",
-        "home", "dishes", "about", "menu", "review", "order"
-      ],
+      availableKeywords: [], // Will be populated dynamically
       currentFocus: -1,
 
       init() {
+        this.generateKeywords();
         this.autocomplete(app.dom.searchBox, this.availableKeywords);
+      },
+
+      generateKeywords() {
+        const dishElements = document.querySelectorAll('#dishes .box h3, #menu .box h3');
+        const sectionKeywords = ["home", "dishes", "about", "menu", "review", "order"];
+        const dishKeywords = Array.from(dishElements).map(el => el.textContent.toLowerCase());
+        this.availableKeywords = [...new Set([...sectionKeywords, ...dishKeywords])];
       },
 
       toggle() {
@@ -149,24 +150,78 @@ document.addEventListener('DOMContentLoaded', () => {
         app.dom.searchForm.classList.remove('active');
         app.dom.searchBox.value = '';
         this.closeAllLists();
+        this.hideNoResultsMessage();
+        // Remove highlights when search is closed manually
+        document.querySelectorAll('.search-highlight').forEach(el => el.classList.remove('search-highlight'));
       },
 
       performSearch(searchTerm) {
         const term = searchTerm.toLowerCase().trim();
-        if (term) {
-          console.log(`Searching for: ${term}`);
-          const targetSection = document.getElementById(term);
-          if (targetSection) {
-            targetSection.scrollIntoView({ behavior: 'smooth' });
-          }
-          this.close();
-        } else {
+        if (!term) {
           console.log("Search term is empty.");
+          return;
+        }
+
+        this.hideNoResultsMessage();
+        document.querySelectorAll('.search-highlight').forEach(el => el.classList.remove('search-highlight'));
+
+        // 1. Check for section ID
+        const targetSection = document.getElementById(term);
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth' });
+          this.close();
+          return;
+        }
+
+        // 2. Search for dish by name or description
+        const allDishes = document.querySelectorAll('#dishes .box, #menu .box');
+        const matchingDishes = [];
+
+        allDishes.forEach(dish => {
+          const dishName = dish.querySelector('h3')?.textContent.toLowerCase();
+          const dishDescription = dish.querySelector('p')?.textContent.toLowerCase();
+
+          if (dishName?.includes(term) || (dishDescription && dishDescription.includes(term))) {
+            matchingDishes.push(dish);
+          }
+        });
+
+        if (matchingDishes.length > 0) {
+          matchingDishes.forEach(dish => dish.classList.add('search-highlight'));
+          matchingDishes[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+          
+          this.close();
+
+          setTimeout(() => {
+            matchingDishes.forEach(dish => dish.classList.remove('search-highlight'));
+          }, 3000); // Highlight for 3 seconds
+        } else {
+          // 3. No match found
+          this.showNoResultsMessage(searchTerm);
+        }
+      },
+
+      showNoResultsMessage(term) {
+        let messageEl = document.getElementById('search-no-results');
+        if (!messageEl) {
+          messageEl = document.createElement('p');
+          messageEl.id = 'search-no-results';
+          app.dom.searchBox.parentNode.appendChild(messageEl);
+        }
+        messageEl.textContent = `No results found for "${term}"`;
+        messageEl.style.display = 'block';
+      },
+
+      hideNoResultsMessage() {
+        const messageEl = document.getElementById('search-no-results');
+        if (messageEl) {
+          messageEl.style.display = 'none';
         }
       },
 
       autocomplete(inp, arr) {
         inp.addEventListener("input", () => {
+          this.hideNoResultsMessage(); // Hide message on new input
           let val = inp.value;
           this.closeAllLists();
           if (!val) return false;
