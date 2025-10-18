@@ -244,8 +244,16 @@
   <section class="menu section-bg" id="menu">
     <h3 class="sub-heading">our menu</h3>
     <h1 class="heading">today's speciality</h1>
+    <div class="menu-filters">
+      <button class="btn filter-btn active" data-filter="all">All</button>
+      <button class="btn filter-btn" data-filter="speciality">Speciality</button>
+      <button class="btn filter-btn" data-filter="extra">Extra</button>
+    </div>
     <div class="box-container">
       <!-- Menu items will be dynamically inserted here by script.js -->
+      <div class="menu-loader-container">
+        <div class="menu-loader"></div>
+      </div>
     </div>
     <div class="load-more-container">
       <a href="#" id="loadMoreBtn" class="btn">Load More <i class="fas fa-sync-alt"></i></a>
@@ -456,7 +464,7 @@
   </div>
 
   <!-- Toast Notification Container -->
-  <div id="toast-container"></div>
+  <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
 
   <!-- loader part -->
   <div class="loader-container">
@@ -467,6 +475,7 @@
 
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <!-- custom js file link -->
+  <script src="menu-data.js"></script>
   <script src="script.js"></script>
 </body>
 
