@@ -1270,6 +1270,7 @@ header .flex .icons #menu-bars {
   font-size: 2.5rem;
   color: var(--primary-text);
   cursor: pointer;
+  background: none;
 }
 
 .cart-header #close-cart:hover,
