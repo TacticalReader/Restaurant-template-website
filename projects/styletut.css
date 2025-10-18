@@ -1278,6 +1278,18 @@ header .flex .icons #menu-bars {
   color: var(--green);
 }
 
+.clear-favorites-btn {
+  font-size: 1.4rem;
+  color: var(--secondary-text);
+  cursor: pointer;
+  background: none;
+  text-decoration: underline;
+}
+
+.clear-favorites-btn:hover {
+  color: #e74c3c;
+}
+
 .cart-items,
 .favorites-items {
   flex-grow: 1;
@@ -1386,10 +1398,23 @@ header .flex .icons #menu-bars {
 .cart-total {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: 2rem;
   font-weight: bold;
   color: var(--primary-text);
   margin-bottom: 1.5rem;
+}
+
+.clear-cart-btn {
+  font-size: 1.4rem;
+  color: var(--secondary-text);
+  cursor: pointer;
+  background: none;
+  text-decoration: underline;
+}
+
+.clear-cart-btn:hover {
+  color: #e74c3c;
 }
 
 .cart-footer .btn {
