@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         backToTopBtn: document.getElementById('backToTopBtn'),
         darkModeToggle: document.getElementById('darkModeToggle'),
         htmlElement: document.documentElement,
-        orderForm: document.querySelector('#order form'),
+        orderForm: document.getElementById('orderForm'),
         userIcon: document.querySelector('header .flex .icons .fa-user'),
         userFormContainer: document.querySelector('.user-form-container'),
         closeLoginForm: document.querySelector('#close-login-form'),
@@ -403,28 +403,59 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================
     forms: {
       validateOrderForm(event) {
-        let valid = true;
-        const inputs = [
-          app.dom.orderForm.querySelector('input[placeholder="enter your name"]'),
-          app.dom.orderForm.querySelector('input[placeholder="enter your number"]'),
-          app.dom.orderForm.querySelector('input[placeholder="enter food name"]'),
-          app.dom.orderForm.querySelector('input[placeholder="how many orders"]'),
-          app.dom.orderForm.querySelector('input[type="datetime-local"]'),
-          app.dom.orderForm.querySelector('textarea[placeholder="enter your address"]'),
-          app.dom.orderForm.querySelector('textarea[placeholder="enter your message"]'),
-        ];
+        event.preventDefault();
+        const form = app.dom.orderForm;
+        if (!form) return;
 
-        inputs.forEach(input => {
-          if (!input.value.trim()) {
-            valid = false;
-            // In a real app, you'd show a message next to the input
-            // For now, we'll just alert once.
-          }
+        let isFormValid = true;
+
+        const requiredFields = form.querySelectorAll('[required]');
+
+        // Clear previous errors
+        form.querySelectorAll('.input-group').forEach(group => {
+            const input = group.querySelector('input, textarea');
+            const errorEl = group.querySelector('.error-message');
+            if (input) input.classList.remove('invalid');
+            if (errorEl) errorEl.textContent = '';
         });
 
-        if (!valid) {
-          event.preventDefault();
-          alert('Please fill out all required fields.');
+        requiredFields.forEach(field => {
+            const group = field.closest('.input-group');
+            const errorEl = group.querySelector('.error-message');
+            let message = '';
+
+            if (field.validity.valueMissing) {
+                message = 'This field is required.';
+            } else if (field.type === 'number' && field.validity.rangeUnderflow) {
+                message = `Must be at least ${field.min}.`;
+            } else if (field.type === 'datetime-local' && !field.value) {
+                // Some browsers don't set validity.valueMissing for datetime-local correctly
+                message = 'Please select a date and time.';
+            } else if (!field.checkValidity()) {
+                // Generic fallback
+                message = 'Please enter a valid value.';
+            }
+
+            if (message) {
+                isFormValid = false;
+                field.classList.add('invalid');
+                if (errorEl) {
+                    errorEl.textContent = message;
+                }
+            } else {
+                field.classList.remove('invalid');
+                if (errorEl) {
+                    errorEl.textContent = '';
+                }
+            }
+        });
+
+        if (isFormValid) {
+            alert('Order placed successfully! Thank you.');
+            form.reset();
+        } else {
+            // Optional: focus the first invalid field
+            form.querySelector('.invalid')?.focus();
         }
       },
 
