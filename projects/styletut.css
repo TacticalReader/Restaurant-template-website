@@ -171,8 +171,9 @@ header .flex .icons #menu-bars {
   display: none;
 }
 
-/* Cart Count Badge */
-#cart-count {
+/* Cart & Favorites Count Badge */
+#cart-count,
+#favorites-count {
   position: absolute;
   top: -0.5rem;
   right: -0.5rem;
@@ -575,7 +576,7 @@ header .flex .icons #menu-bars {
   cursor: pointer;
 }
 
-.menu .box-container .box .image .fa-heart {
+.menu .box-container .box .image .add-to-favorites-btn {
   position: absolute;
   top: 2.5rem;
   right: 2.5rem;
@@ -587,9 +588,15 @@ header .flex .icons #menu-bars {
   background: var(--primary-bg);
   border-radius: 50%;
   color: var(--primary-text);
+  cursor: pointer;
 }
 
-.menu .box-container .box .image .fa-heart:hover {
+.menu .box-container .box .image .add-to-favorites-btn:hover {
+  background-color: var(--green);
+  color: #fff;
+}
+
+.menu .box-container .box .image .add-to-favorites-btn.active {
   background-color: var(--green);
   color: #fff;
 }
@@ -1197,9 +1204,10 @@ header .flex .icons #menu-bars {
 }
 
 /* ========================= */
-/* Cart Sidebar Styles */
+/* Cart & Favorites Sidebar Styles */
 /* ========================= */
-.cart-overlay {
+.cart-overlay,
+.favorites-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -1212,12 +1220,14 @@ header .flex .icons #menu-bars {
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.cart-overlay.active {
+.cart-overlay.active,
+.favorites-overlay.active {
   opacity: 1;
   visibility: visible;
 }
 
-.cart-sidebar {
+.cart-sidebar,
+.favorites-sidebar {
   position: fixed;
   top: 0;
   right: -100%;
@@ -1232,11 +1242,13 @@ header .flex .icons #menu-bars {
   flex-direction: column;
 }
 
-.cart-sidebar.active {
+.cart-sidebar.active,
+.favorites-sidebar.active {
   right: 0;
 }
 
-.cart-header {
+.cart-header,
+.favorites-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1244,28 +1256,33 @@ header .flex .icons #menu-bars {
   border-bottom: 0.1rem solid var(--border-color);
 }
 
-.cart-header h3 {
+.cart-header h3,
+.favorites-header h3 {
   font-size: 2.4rem;
   color: var(--primary-text);
 }
 
-.cart-header #close-cart {
+.cart-header #close-cart,
+.favorites-header #close-favorites {
   font-size: 2.5rem;
   color: var(--primary-text);
   cursor: pointer;
 }
 
-.cart-header #close-cart:hover {
+.cart-header #close-cart:hover,
+.favorites-header #close-favorites:hover {
   color: var(--green);
 }
 
-.cart-items {
+.cart-items,
+.favorites-items {
   flex-grow: 1;
   overflow-y: auto;
   padding: 1rem;
 }
 
-.cart-empty {
+.cart-empty,
+.favorites-empty {
   text-align: center;
   font-size: 1.6rem;
   color: var(--secondary-text);
@@ -1273,7 +1290,8 @@ header .flex .icons #menu-bars {
   text-transform: none;
 }
 
-.cart-item {
+.cart-item,
+.favorite-item {
   display: flex;
   align-items: center;
   gap: 1.5rem;
@@ -1281,28 +1299,33 @@ header .flex .icons #menu-bars {
   border-bottom: 0.1rem solid var(--border-color);
 }
 
-.cart-item:last-child {
+.cart-item:last-child,
+.favorite-item:last-child {
   border-bottom: none;
 }
 
-.cart-item img {
+.cart-item img,
+.favorite-item img {
   width: 8rem;
   height: 8rem;
   object-fit: cover;
   border-radius: 0.5rem;
 }
 
-.cart-item-details {
+.cart-item-details,
+.favorite-item-details {
   flex-grow: 1;
 }
 
-.cart-item-details h4 {
+.cart-item-details h4,
+.favorite-item-details h4 {
   font-size: 1.6rem;
   color: var(--primary-text);
   margin-bottom: 0.5rem;
 }
 
-.cart-item-details p {
+.cart-item-details p,
+.favorite-item-details p {
   font-size: 1.5rem;
   color: var(--green);
   font-weight: bold;
@@ -1313,6 +1336,19 @@ header .flex .icons #menu-bars {
   flex-direction: column;
   align-items: flex-end;
   gap: 0.5rem;
+}
+
+.favorite-item-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.favorite-item-actions .btn {
+  margin-top: 0;
+  width: 100%;
+  padding: 0.8rem 1.5rem;
 }
 
 .cart-item-quantity {
@@ -1327,7 +1363,8 @@ header .flex .icons #menu-bars {
   text-transform: none;
 }
 
-.cart-item-remove {
+.cart-item-remove,
+.favorite-item-remove {
   background: none;
   color: #e74c3c;
   font-size: 2rem;
@@ -1461,7 +1498,8 @@ header .flex .icons #menu-bars {
     padding: 1.2rem 1.5rem;
     font-size: 1.6rem;
   }
-  .cart-sidebar {
+  .cart-sidebar,
+  .favorites-sidebar {
     width: 100%;
   }
 }
