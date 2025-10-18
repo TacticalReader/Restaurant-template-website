@@ -647,58 +647,107 @@ header .flex .icons #menu-bars {
 /* ========================= */
 /* Order Section */
 /* ========================= */
-.order form {
-  max-width: 90rem;
+.order .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.order .row .image {
+  flex: 1 1 35rem;
+}
+
+.order .row .image img {
+  width: 100%;
   border-radius: 0.5rem;
-  box-shadow: 0 0.5rem 1.5rem var(--shadow-color);
+}
+
+.order .row form {
+  flex: 1 1 50rem;
+  border-radius: 0.5rem;
+  box-shadow: var(--box-shadow);
   border: 0.1rem solid var(--border-color);
   background: var(--primary-bg);
-  padding: 1.5rem;
-  margin: 0 auto;
-  padding-top: 1rem;
+  padding: 2rem;
 }
 
 .order form .inputBox {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  gap: 1.5rem;
 }
 
-.order form .inputBox .input {
-  width: 49%;
-}
-
-.order form .inputBox .input span {
-  display: block;
-  padding: 0.5rem 0;
-  font-size: 1.5rem;
-  color: var(--secondary-text);
-}
-
-.order form .inputBox .input input,
-.order form .inputBox .input textarea {
-  background: var(--secondary-bg);
-  border-radius: 0.5rem;
-  padding: 1.4rem;
-  font-size: 1.8rem;
-  color: var(--primary-text);
-  text-transform: none;
-  margin-bottom: 1rem;
+.order form .input-group.full-width {
   width: 100%;
 }
 
-.order form .inputBox .input input:focus,
-.order form .inputBox .input textarea:focus {
-  border: 0.1rem solid var(--green);
+.order form .inputBox .input-group {
+  width: 100%;
+  margin-bottom: 1rem;
 }
 
-.order form .inputBox .input textarea {
-  height: 20rem;
-  resize: none;
+@media (min-width: 768px) {
+  .order form .inputBox .input-group {
+    width: calc(50% - 0.75rem);
+  }
+}
+
+.order form .input-group label {
+  display: block;
+  padding-bottom: 0.7rem;
+  font-size: 1.6rem;
+  color: var(--secondary-text);
+  text-transform: none;
+}
+
+.order form .input-group input,
+.order form .input-group textarea {
+  background: var(--secondary-bg);
+  border-radius: 0.5rem;
+  padding: 1.2rem 1.4rem;
+  font-size: 1.6rem;
+  color: var(--primary-text);
+  text-transform: none;
+  width: 100%;
+  border: 0.1rem solid transparent;
+}
+
+.order form .input-group input:focus,
+.order form .input-group textarea:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 0.2rem rgba(33, 174, 96, 0.2);
+}
+
+.order form .input-group textarea {
+  height: 15rem;
+  resize: vertical;
 }
 
 .order form .btn {
-  margin-top: 0;
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+/* Validation Styles */
+.order form .input-group .error-message {
+  color: #e74c3c;
+  font-size: 1.3rem;
+  display: block;
+  height: 1.5rem; /* Reserve space to prevent layout shift */
+  margin-top: 0.5rem;
+  text-transform: none;
+}
+
+.order form .input-group input.invalid,
+.order form .input-group textarea.invalid {
+  border-color: #e74c3c;
+}
+
+.order form .input-group input.invalid:focus,
+.order form .input-group textarea.invalid:focus {
+  box-shadow: 0 0 0 0.2rem rgba(231, 76, 60, 0.2);
 }
 
 /* ========================= */
@@ -1113,7 +1162,7 @@ header .flex .icons #menu-bars {
     height: auto;
     width: 100%;
   }
-  .order form .inputBox .input {
+  .order form .inputBox .input-group {
     width: 100%;
   }
   .footer .box-container .newsletter-box {
