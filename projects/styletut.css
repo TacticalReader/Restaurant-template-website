@@ -275,6 +275,22 @@ header .flex .icons #menu-bars {
   font-size: 5rem;
 }
 
+#search-form #search-no-results {
+  position: absolute;
+  top: calc(100% + 1rem);
+  left: 0;
+  right: 0;
+  background-color: var(--secondary-bg);
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 1.8rem;
+  color: var(--primary-text);
+  border-radius: 0.5rem;
+  box-shadow: var(--box-shadow);
+  display: none; /* Initially hidden */
+  text-transform: none;
+}
+
 /* ========================= */
 /* Home Section */
 /* ========================= */
@@ -327,6 +343,13 @@ header .flex .icons #menu-bars {
   grid-template-columns: repeat(auto-fit, 35rem);
   gap: 1.5rem;
   justify-content: center;
+}
+
+.dishes .box-container .box.search-highlight,
+.menu .box-container .box.search-highlight {
+  outline: 0.3rem solid var(--green);
+  transform: scale(1.03);
+  box-shadow: 0 1rem 2rem var(--shadow-color);
 }
 
 .dishes .box-container .box {
