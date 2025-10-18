@@ -651,20 +651,12 @@ header .flex .icons #menu-bars {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
-  align-items: flex-start;
-}
-
-.order .row .image {
-  flex: 1 1 35rem;
-}
-
-.order .row .image img {
-  width: 100%;
-  border-radius: 0.5rem;
+  justify-content: center;
 }
 
 .order .row form {
-  flex: 1 1 50rem;
+  flex: 0 1 70rem;
+  width: 100%;
   border-radius: 0.5rem;
   box-shadow: var(--box-shadow);
   border: 0.1rem solid var(--border-color);
