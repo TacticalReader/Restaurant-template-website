@@ -511,11 +511,45 @@ header .flex .icons #menu-bars {
 /* ========================= */
 /* Menu Section */
 /* ========================= */
+.menu .menu-filters {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.menu .menu-filters .filter-btn {
+  margin: 0.5rem;
+  background: var(--secondary-bg);
+  color: var(--primary-text);
+}
+
+.menu .menu-filters .filter-btn.active,
+.menu .menu-filters .filter-btn:hover {
+  background: var(--green);
+  color: #fff;
+}
+
 .menu .box-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, 35rem);
   gap: 1.5rem;
   justify-content: center;
+}
+
+.menu .menu-loader-container {
+  display: none; /* Hidden by default */
+  width: 100%;
+  text-align: center;
+  padding: 5rem 0;
+}
+
+.menu .menu-loader {
+  border: 0.5rem solid var(--secondary-bg);
+  border-top: 0.5rem solid var(--green);
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  animation: spin 1s linear infinite;
+  display: inline-block;
 }
 
 .menu .box-container .box {
