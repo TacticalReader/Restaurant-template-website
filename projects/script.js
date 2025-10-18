@@ -1,24 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Data for menu items - easier to manage than hardcoded HTML
-  const menuData = [
-    { id: "menu-1", name: "beef steak", price: 22.99, image: "menu-1.jpg", description: "Tender grilled beef steak cooked to perfection with aromatic herbs.", category: "speciality" },
-    { id: "menu-2", name: "salmon fillet", price: 19.99, image: "menu-2.jpg", description: "Fresh salmon fillet grilled with lemon butter and seasonal vegetables.", category: "speciality" },
-    { id: "menu-3", name: "mushroom risotto", price: 16.99, image: "menu-3.jpg", description: "Creamy risotto with wild mushrooms and parmesan cheese.", category: "speciality" },
-    { id: "menu-4", name: "lamb chops", price: 25.99, image: "menu-4.jpg", description: "Succulent lamb chops marinated in Mediterranean spices.", category: "speciality" },
-    { id: "menu-5", name: "chicken wings", price: 13.99, image: "menu-5.jpg", description: "Crispy buffalo wings served with blue cheese dipping sauce.", category: "speciality" },
-    { id: "menu-6", name: "shrimp scampi", price: 18.99, image: "menu-6.jpg", description: "Garlic butter shrimp served over linguine pasta with white wine.", category: "speciality" },
-    { id: "menu-7", name: "caesar salad", price: 11.99, image: "menu-7.jpg", description: "Fresh romaine lettuce with croutons, parmesan and caesar dressing.", category: "speciality" },
-    { id: "menu-8", name: "tiramisu", price: 8.99, image: "menu-8.jpg", description: "Classic Italian dessert with coffee-soaked ladyfingers and mascarpone.", category: "speciality" },
-    { id: "menu-9", name: "lobster tail", price: 32.99, image: "menu-9.jpg", description: "Butter-poached lobster tail served with drawn butter and herbs.", category: "speciality" },
-    { id: "menu-10", name: "Butter Chicken", price: 17.99, image: "menu-10.jpg", description: "Tender chicken in a creamy, spiced tomato and butter sauce.", category: "extra" },
-    { id: "menu-11", name: "Palak Paneer", price: 15.99, image: "menu-11.jpg", description: "Indian cottage cheese cubes in a smooth, creamy spinach gravy.", category: "extra" },
-    { id: "menu-12", name: "Chole Bhature", price: 14.99, image: "menu-12.jpg", description: "Spicy chickpea curry served with fluffy, deep-fried bread.", category: "extra" },
-    { id: "menu-13", name: "Masala Dosa", price: 12.99, image: "menu-13.jpg", description: "Crispy rice crepe filled with a savory spiced potato mixture.", category: "extra" },
-    { id: "menu-14", name: "Idli Sambar", price: 10.99, image: "menu-14.jpg", description: "Steamed rice cakes served with a tangy lentil-vegetable stew.", category: "extra" },
-    { id: "menu-15", name: "Hyderabadi Biryani", price: 18.99, image: "menu-15.jpg", description: "Aromatic basmati rice and meat/veg cooked with saffron and spices.", category: "extra" }
-  ];
-
   const app = {
     // =========================
     // INITIALIZATION
@@ -67,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         newsletterEmailInput: document.querySelector('.email-input'),
         loadMoreBtn: document.getElementById('loadMoreBtn'),
         menuContainer: document.querySelector('#menu .box-container'),
+        menuFiltersContainer: document.querySelector('.menu-filters'),
         toastContainer: document.getElementById('toast-container'),
         cartIcon: document.getElementById('cart-icon'),
         cartCount: document.getElementById('cart-count'),
@@ -402,6 +384,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const toast = document.createElement('div');
         toast.classList.add('toast', `toast-${type}`);
         toast.textContent = message;
+        toast.setAttribute('role', 'status'); // Accessibility improvement
         app.dom.toastContainer.appendChild(toast);
         setTimeout(() => {
           toast.classList.add('hide');
@@ -546,30 +529,73 @@ document.addEventListener('DOMContentLoaded', () => {
     menu: {
       itemsPerPage: 9,
       currentPage: 1,
+      currentFilter: 'all',
+      filteredItems: [],
+
       init() {
-        this.renderMenu();
+        this.fetchAndRenderMenu();
+        this.setupEventListeners();
+      },
+
+      setupEventListeners() {
         app.dom.loadMoreBtn.addEventListener('click', (e) => {
           e.preventDefault();
           this.loadMore();
         });
+
+        app.dom.menuFiltersContainer.addEventListener('click', (e) => {
+          if (e.target.matches('.filter-btn')) {
+            this.handleFilterClick(e.target);
+          }
+        });
       },
+
+      fetchAndRenderMenu() {
+        this.showLoader();
+        // Simulate fetching data from an API
+        setTimeout(() => {
+          this.hideLoader();
+          this.renderMenu();
+        }, 800);
+      },
+
+      handleFilterClick(target) {
+        app.dom.menuFiltersContainer.querySelector('.active').classList.remove('active');
+        target.classList.add('active');
+        this.currentFilter = target.dataset.filter;
+        this.currentPage = 1; // Reset to first page
+        this.renderMenu();
+      },
+
       renderMenu() {
-        const menuItems = menuData.slice(0, this.itemsPerPage);
-        app.dom.menuContainer.innerHTML = menuItems.map(item => this.createMenuItemHTML(item)).join('');
-        if (menuData.length <= this.itemsPerPage) {
+        if (this.currentFilter === 'all') {
+          this.filteredItems = [...menuData];
+        } else {
+          this.filteredItems = menuData.filter(item => item.category === this.currentFilter);
+        }
+
+        const menuItemsToShow = this.filteredItems.slice(0, this.itemsPerPage);
+        app.dom.menuContainer.innerHTML = menuItemsToShow.map(item => this.createMenuItemHTML(item)).join('');
+
+        if (this.filteredItems.length > this.itemsPerPage) {
+          app.dom.loadMoreBtn.parentElement.style.display = 'block';
+        } else {
           app.dom.loadMoreBtn.parentElement.style.display = 'none';
         }
       },
+
       loadMore() {
         this.currentPage++;
         const start = (this.currentPage - 1) * this.itemsPerPage;
         const end = this.currentPage * this.itemsPerPage;
-        const newItems = menuData.slice(start, end);
+        const newItems = this.filteredItems.slice(start, end);
         app.dom.menuContainer.insertAdjacentHTML('beforeend', newItems.map(item => this.createMenuItemHTML(item)).join(''));
-        if (end >= menuData.length) {
+
+        if (end >= this.filteredItems.length) {
           app.dom.loadMoreBtn.parentElement.style.display = 'none';
         }
       },
+
       createMenuItemHTML(item) {
         return `
           <div class="box">
@@ -588,6 +614,16 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
           </div>
         `;
+      },
+
+      showLoader() {
+        const loaderHTML = `<div class="menu-loader-container" style="display: block;"><div class="menu-loader"></div></div>`;
+        app.dom.menuContainer.innerHTML = loaderHTML;
+      },
+
+      hideLoader() {
+        const loader = app.dom.menuContainer.querySelector('.menu-loader-container');
+        if (loader) loader.style.display = 'none';
       },
     },
 
@@ -746,3 +782,23 @@ document.addEventListener('DOMContentLoaded', () => {
   app.init();
 
 });
+
+
+
+const menuData = [
+  { id: "menu-1", name: "beef steak", price: 22.99, image: "menu-1.jpg", description: "Tender grilled beef steak cooked to perfection with aromatic herbs.", category: "speciality" },
+  { id: "menu-2", name: "salmon fillet", price: 19.99, image: "menu-2.jpg", description: "Fresh salmon fillet grilled with lemon butter and seasonal vegetables.", category: "speciality" },
+  { id: "menu-3", name: "mushroom risotto", price: 16.99, image: "menu-3.jpg", description: "Creamy risotto with wild mushrooms and parmesan cheese.", category: "speciality" },
+  { id: "menu-4", name: "lamb chops", price: 25.99, image: "menu-4.jpg", description: "Succulent lamb chops marinated in Mediterranean spices.", category: "speciality" },
+  { id: "menu-5", name: "chicken wings", price: 13.99, image: "menu-5.jpg", description: "Crispy buffalo wings served with blue cheese dipping sauce.", category: "speciality" },
+  { id: "menu-6", name: "shrimp scampi", price: 18.99, image: "menu-6.jpg", description: "Garlic butter shrimp served over linguine pasta with white wine.", category: "speciality" },
+  { id: "menu-7", name: "caesar salad", price: 11.99, image: "menu-7.jpg", description: "Fresh romaine lettuce with croutons, parmesan and caesar dressing.", category: "speciality" },
+  { id: "menu-8", name: "tiramisu", price: 8.99, image: "menu-8.jpg", description: "Classic Italian dessert with coffee-soaked ladyfingers and mascarpone.", category: "speciality" },
+  { id: "menu-9", name: "lobster tail", price: 32.99, image: "menu-9.jpg", description: "Butter-poached lobster tail served with drawn butter and herbs.", category: "speciality" },
+  { id: "menu-10", name: "Butter Chicken", price: 17.99, image: "menu-10.jpg", description: "Tender chicken in a creamy, spiced tomato and butter sauce.", category: "extra" },
+  { id: "menu-11", name: "Palak Paneer", price: 15.99, image: "menu-11.jpg", description: "Indian cottage cheese cubes in a smooth, creamy spinach gravy.", category: "extra" },
+  { id: "menu-12", name: "Chole Bhature", price: 14.99, image: "menu-12.jpg", description: "Spicy chickpea curry served with fluffy, deep-fried bread.", category: "extra" },
+  { id: "menu-13", name: "Masala Dosa", price: 12.99, image: "menu-13.jpg", description: "Crispy rice crepe filled with a savory spiced potato mixture.", category: "extra" },
+  { id: "menu-14", name: "Idli Sambar", price: 10.99, image: "menu-14.jpg", description: "Steamed rice cakes served with a tangy lentil-vegetable stew.", category: "extra" },
+  { id: "menu-15", name: "Hyderabadi Biryani", price: 18.99, image: "menu-15.jpg", description: "Aromatic basmati rice and meat/veg cooked with saffron and spices.", category: "extra" }
+];
