@@ -53,18 +53,36 @@
     <div id="close-login-form" class="fas fa-times"></div>
     <form action="" id="login-form">
       <h3>login now</h3>
-      <input type="email" placeholder="your email" class="box" required>
-      <input type="password" placeholder="your password" class="box" required>
+      <div class="input-group">
+        <i class="fas fa-envelope"></i>
+        <input type="email" placeholder="your email" class="box" required>
+      </div>
+      <div class="input-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" placeholder="your password" class="box" required>
+      </div>
       <input type="submit" value="login now" class="btn">
       <p>forget password? <a href="#">click here</a></p>
       <p>don't have an account? <a href="#" id="show-signup">create one</a></p>
     </form>
     <form action="" id="signup-form" style="display: none;">
       <h3>register now</h3>
-      <input type="text" placeholder="your name" class="box" required>
-      <input type="email" placeholder="your email" class="box" required>
-      <input type="password" placeholder="your password" class="box" required>
-      <input type="password" placeholder="confirm password" class="box" required>
+      <div class="input-group">
+        <i class="fas fa-user"></i>
+        <input type="text" placeholder="your name" class="box" required>
+      </div>
+      <div class="input-group">
+        <i class="fas fa-envelope"></i>
+        <input type="email" placeholder="your email" class="box" required>
+      </div>
+      <div class="input-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" placeholder="your password" class="box" required>
+      </div>
+      <div class="input-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" placeholder="confirm password" class="box" required>
+      </div>
       <input type="submit" value="register now" class="btn">
       <p>already have an account? <a href="#" id="show-login">login now</a></p>
     </form>
