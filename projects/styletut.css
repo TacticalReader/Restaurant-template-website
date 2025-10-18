@@ -30,16 +30,23 @@ html[data-theme="dark"] {
   --btn-text: #fff;
 }
 
+/* ========================= */
+/* Global Styles & Resets */
+/* ========================= */
 * {
   font-family: 'Nunito', sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
-  outline: none;
   border: none;
   text-transform: capitalize;
   transition: all 0.2s linear;
+}
+
+*:focus-visible {
+  outline: 0.2rem solid var(--green);
+  outline-offset: 0.2rem;
 }
 
 html {
@@ -60,7 +67,7 @@ section {
   margin: 0 auto;
 }
 
-.container:nth-child(even) {
+.section-bg {
   background: var(--secondary-bg);
 }
 
@@ -94,6 +101,9 @@ section {
   letter-spacing: 0.1rem;
 }
 
+/* ========================= */
+/* Header */
+/* ========================= */
 header {
   position: fixed;
   top: 0;
@@ -160,6 +170,9 @@ header .flex .icons #menu-bars {
   display: none;
 }
 
+/* ========================= */
+/* Search Form */
+/* ========================= */
 #search-form {
   position: fixed;
   top: -110%;
@@ -181,28 +194,19 @@ header .flex .icons #menu-bars {
 #search-form .search-input-group {
   position: relative;
   width: 50rem;
-  /* Same width as original search-box */
   display: flex;
-  /* Make it a flex container for input and label */
   align-items: center;
   border-bottom: 0.1rem solid var(--primary-text);
-  /* Move border to the group */
   padding-bottom: 1rem;
-  /* Adjust padding */
 }
 
 #search-form #search-box {
   width: 100%;
-  /* Fill available space */
   padding: 1rem 0;
   color: var(--primary-text);
   font-size: 3rem;
   text-transform: none;
   background: none;
-  border: none;
-  /* Remove individual border, it's on the group */
-  outline: none;
-  /* Remove outline on focus */
 }
 
 #search-form #search-box::placeholder {
@@ -218,7 +222,6 @@ header .flex .icons #menu-bars {
   cursor: pointer;
   font-size: 3rem;
   margin-left: 1rem;
-  /* Space between input and icon */
 }
 
 #search-form .search-input-group label:hover {
@@ -231,16 +234,12 @@ header .flex .icons #menu-bars {
   border-top: none;
   z-index: 99;
   top: calc(100% + 1rem);
-  /* Position below the search box group, with some space */
   left: 0;
   right: 0;
   max-height: 20rem;
-  /* Limit height and add scroll */
   overflow-y: auto;
   background-color: var(--secondary-bg);
-  /* Dark background for suggestions */
   border-radius: 0 0 0.5rem 0.5rem;
-  /* Rounded corners only at bottom */
   box-shadow: 0 0.5rem 1.5rem var(--shadow-color);
 }
 
@@ -248,10 +247,8 @@ header .flex .icons #menu-bars {
   padding: 1rem;
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.05);
-  /* Slightly transparent white for items */
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   color: var(--primary-text);
-  /* White text for suggestions */
   font-size: 1.8rem;
   text-transform: none;
 }
@@ -262,7 +259,6 @@ header .flex .icons #menu-bars {
 
 #search-form .autocomplete-items div:hover {
   background-color: rgba(255, 255, 255, 0.1);
-  /* Slightly brighter on hover */
 }
 
 #search-form .autocomplete-active {
@@ -279,6 +275,9 @@ header .flex .icons #menu-bars {
   font-size: 5rem;
 }
 
+/* ========================= */
+/* Home Section */
+/* ========================= */
 .home .home-slider .slide {
   display: flex;
   align-items: center;
@@ -320,6 +319,9 @@ header .flex .icons #menu-bars {
   background: var(--green);
 }
 
+/* ========================= */
+/* Dishes Section */
+/* ========================= */
 .dishes .box-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, 35rem);
@@ -399,6 +401,9 @@ header .flex .icons #menu-bars {
   font-size: 2.5rem;
 }
 
+/* ========================= */
+/* About Section */
+/* ========================= */
 .about .row {
   display: flex;
   flex-wrap: wrap;
@@ -461,6 +466,9 @@ header .flex .icons #menu-bars {
   color: var(--primary-text);
 }
 
+/* ========================= */
+/* Menu Section */
+/* ========================= */
 .menu .box-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, 35rem);
@@ -489,7 +497,6 @@ header .flex .icons #menu-bars {
   border-radius: 0.5rem;
   object-fit: cover;
   cursor: pointer;
-  /* Added cursor pointer */
 }
 
 .menu .box-container .box .image .fa-heart {
@@ -562,6 +569,9 @@ header .flex .icons #menu-bars {
   100% { transform: rotate(360deg); }
 }
 
+/* ========================= */
+/* Review Section */
+/* ========================= */
 .review .slide {
   padding: 2rem;
   box-shadow: 0 0.5rem 1.5rem var(--shadow-color);
@@ -611,6 +621,9 @@ header .flex .icons #menu-bars {
   color: var(--secondary-text);
 }
 
+/* ========================= */
+/* Order Section */
+/* ========================= */
 .order form {
   max-width: 90rem;
   border-radius: 0.5rem;
@@ -665,6 +678,9 @@ header .flex .icons #menu-bars {
   margin-top: 0;
 }
 
+/* ========================= */
+/* Footer */
+/* ========================= */
 .footer .box-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
@@ -698,28 +714,22 @@ header .flex .icons #menu-bars {
 .footer .box-container .newsletter-box {
   text-align: center;
   padding: 3rem 2rem;
-  /* More vertical padding */
   border: 0.1rem solid var(--border-color);
   border-radius: 0.8rem;
-  /* Slightly more rounded corners */
   box-shadow: var(--box-shadow);
-  /* Using existing shadow variable */
   background: var(--primary-bg);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-top: 2rem;
-  /* Add some top margin to separate from other footer boxes if needed */
 }
 
 .footer .box-container .newsletter-box .newsletter-icon {
   font-size: 4.5rem;
-  /* Larger icon */
   color: var(--green);
   margin-bottom: 1.5rem;
   animation: bounce 2s infinite;
-  /* Added a subtle animation */
 }
 
 @keyframes bounce {
@@ -741,18 +751,14 @@ header .flex .icons #menu-bars {
 .footer .box-container .newsletter-box h3 {
   margin-bottom: 1rem;
   font-size: 2.8rem;
-  /* Slightly larger heading */
 }
 
 .footer .box-container .newsletter-box p {
   font-size: 1.7rem;
-  /* Slightly larger font */
   color: var(--secondary-text);
   margin-bottom: 2.5rem;
-  /* More space below paragraph */
   line-height: 1.6;
   max-width: 30rem;
-  /* Limit width for better readability */
 }
 
 .footer .box-container .newsletter-box .newsletter-input-group {
@@ -760,15 +766,12 @@ header .flex .icons #menu-bars {
   flex-direction: column;
   width: 100%;
   max-width: 35rem;
-  /* Limit max width of input group */
   gap: 1.2rem;
-  /* More space between input and button */
 }
 
 .footer .box-container .newsletter-box .email-input {
   width: 100%;
   padding: 1.4rem 1.8rem;
-  /* More padding */
   font-size: 1.7rem;
   color: var(--primary-text);
   background: var(--secondary-bg);
@@ -781,7 +784,6 @@ header .flex .icons #menu-bars {
 .footer .box-container .newsletter-box .email-input:focus {
   border-color: var(--green);
   box-shadow: 0 0 0 0.2rem rgba(33, 174, 96, 0.2);
-  /* Focus shadow */
 }
 
 .footer .box-container .newsletter-box .newsletter-btn {
@@ -807,13 +809,15 @@ header .flex .icons #menu-bars {
   padding: 0.5rem;
   padding-top: 3rem;
   margin-top: 3rem;
-  /* padding-bottom:6rem; */
 }
 
 .footer .credit span {
   color: var(--green);
 }
 
+/* ========================= */
+/* Loader & Overlays */
+/* ========================= */
 .loader-container {
   position: fixed;
   top: 0;
@@ -845,7 +849,6 @@ header .flex .icons #menu-bars {
   height: 100%;
   width: 100%;
   z-index: 10000;
-  /* Higher than search form */
   background: rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
@@ -920,7 +923,6 @@ header .flex .icons #menu-bars {
   text-align: center;
   z-index: 999;
   display: none;
-  /* Hidden by default */
   cursor: pointer;
   box-shadow: 0 0.5rem 1.5rem var(--shadow-color);
 }
@@ -941,7 +943,6 @@ header .flex .icons #menu-bars {
   align-items: center;
   justify-content: center;
   z-index: 10000;
-  /* Higher than other overlays */
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
@@ -964,9 +965,7 @@ header .flex .icons #menu-bars {
 .lightbox-image {
   max-width: 100%;
   max-height: 80vh;
-  /* Limit height to prevent overflow */
   object-fit: contain;
-  /* Ensure image fits without cropping */
   border-radius: 0.5rem;
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3);
 }
@@ -1007,7 +1006,9 @@ header .flex .icons #menu-bars {
   right: 2rem;
 }
 
-/* media queries  */
+/* ========================= */
+/* Media Queries */
+/* ========================= */
 @media (max-width: 991px) {
   html {
     font-size: 55%;
