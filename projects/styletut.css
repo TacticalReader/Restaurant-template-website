@@ -15,6 +15,7 @@
   --btn-bg: var(--black);
   --btn-hover-bg: var(--green);
   --btn-text: #fff;
+  --btn-hover-text: #fff;
 }
 
 /* Dark Mode */
@@ -28,6 +29,7 @@ html[data-theme="dark"] {
   --btn-bg: var(--green);
   --btn-hover-bg: var(--primary-text);
   --btn-text: #fff;
+  --btn-hover-text: var(--green);
 }
 
 /* ========================= */
@@ -98,6 +100,7 @@ section {
 
 .btn:hover {
   background: var(--btn-hover-bg);
+  color: var(--btn-hover-text);
   letter-spacing: 0.1rem;
 }
 
