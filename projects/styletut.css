@@ -1412,6 +1412,9 @@ header .flex .icons #menu-bars {
   header .flex .icons #menu-bars {
     display: inline-block;
   }
+  header .flex .icons #favorites-icon {
+    display: none;
+  }
   header .flex .navbar {
     position: absolute;
     top: 100%;
