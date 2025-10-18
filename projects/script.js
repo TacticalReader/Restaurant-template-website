@@ -1,6 +1,114 @@
+const menuData = [
+  { id: "menu-1", name: "beef steak", price: 22.99, image: "menu-1.jpg", description: "Tender grilled beef steak cooked to perfection with aromatic herbs.", category: "speciality" },
+  { id: "menu-2", name: "salmon fillet", price: 19.99, image: "menu-2.jpg", description: "Fresh salmon fillet grilled with lemon butter and seasonal vegetables.", category: "speciality" },
+  { id: "menu-3", name: "mushroom risotto", price: 16.99, image: "menu-3.jpg", description: "Creamy risotto with wild mushrooms and parmesan cheese.", category: "speciality" },
+  { id: "menu-4", name: "lamb chops", price: 25.99, image: "menu-4.jpg", description: "Succulent lamb chops marinated in Mediterranean spices.", category: "speciality" },
+  { id: "menu-5", name: "chicken wings", price: 13.99, image: "menu-5.jpg", description: "Crispy buffalo wings served with blue cheese dipping sauce.", category: "speciality" },
+  { id: "menu-6", name: "shrimp scampi", price: 18.99, image: "menu-6.jpg", description: "Garlic butter shrimp served over linguine pasta with white wine.", category: "speciality" },
+  { id: "menu-7", name: "caesar salad", price: 11.99, image: "menu-7.jpg", description: "Fresh romaine lettuce with croutons, parmesan and caesar dressing.", category: "speciality" },
+  { id: "menu-8", name: "tiramisu", price: 8.99, image: "menu-8.jpg", description: "Classic Italian dessert with coffee-soaked ladyfingers and mascarpone.", category: "speciality" },
+  { id: "menu-9", name: "lobster tail", price: 32.99, image: "menu-9.jpg", description: "Butter-poached lobster tail served with drawn butter and herbs.", category: "speciality" },
+  { id: "menu-10", name: "Butter Chicken", price: 17.99, image: "menu-10.jpg", description: "Tender chicken in a creamy, spiced tomato and butter sauce.", category: "extra" },
+  { id: "menu-11", name: "Palak Paneer", price: 15.99, image: "menu-11.jpg", description: "Indian cottage cheese cubes in a smooth, creamy spinach gravy.", category: "extra" },
+  { id: "menu-12", name: "Chole Bhature", price: 14.99, image: "menu-12.jpg", description: "Spicy chickpea curry served with fluffy, deep-fried bread.", category: "extra" },
+  { id: "menu-13", name: "Masala Dosa", price: 12.99, image: "menu-13.jpg", description: "Crispy rice crepe filled with a savory spiced potato mixture.", category: "extra" },
+  { id: "menu-14", name: "Idli Sambar", price: 10.99, image: "menu-14.jpg", description: "Steamed rice cakes served with a tangy lentil-vegetable stew.", category: "extra" },
+  { id: "menu-15", name: "Hyderabadi Biryani", price: 18.99, image: "menu-15.jpg", description: "Aromatic basmati rice and meat/veg cooked with saffron and spices.", category: "extra" }
+];
+
+const reviewData = [
+    {
+        name: "sarah johnson",
+        image: "pic-1.png",
+        date: "October 26, 2023",
+        text: "Amazing dining experience! The food quality is outstanding and the service is exceptional. I particularly loved the salmon fillet - it was cooked to perfection. Will definitely be coming back with family and friends."
+    },
+    {
+        name: "mike chen",
+        image: "pic-2.png",
+        date: "October 22, 2023",
+        text: "Best restaurant in town! The beef steak was incredibly tender and flavorful. The atmosphere is perfect for both casual dining and special occasions. Fast delivery service and friendly staff make it even better."
+    },
+    {
+        name: "emma davis",
+        image: "pic-3.png",
+        date: "October 19, 2023",
+        text: "Excellent food and presentation! I ordered the mushroom risotto and it exceeded all expectations. The ingredients are fresh, portions are generous, and prices are very reasonable. Highly recommend this place!"
+    },
+    {
+        name: "alex martinez",
+        image: "pic-4.png",
+        date: "October 15, 2023",
+        text: "Outstanding culinary experience! The variety of dishes is impressive and everything tastes authentic. The tiramisu for dessert was absolutely divine. Great value for money and excellent customer service throughout."
+    },
+    {
+        name: "david lee",
+        image: "pic-1.png",
+        date: "October 12, 2023",
+        text: "A hidden gem! The Chole Bhature was authentic and delicious. The service was quick and the staff was very friendly. It's my new go-to spot for Indian food. Can't wait to try more from their menu."
+    }
+];
+
+
+
+
+
+
+
+
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
 
   const app = {
+    // =========================
+    // UTILITIES
+    // =========================
+    throttle(func, limit) {
+      let inThrottle;
+      return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+          func.apply(context, args);
+          inThrottle = true;
+          setTimeout(() => inThrottle = false, limit);
+        }
+      }
+    },
+
+    focusTrap(element, closeCallback) {
+      const focusableElements = element.querySelectorAll(
+        'a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      const firstFocusableElement = focusableElements[0];
+      const lastFocusableElement = focusableElements[focusableElements.length - 1];
+
+      function handleKeyDown(e) {
+        const isTabPressed = e.key === 'Tab';
+
+        if (!isTabPressed) return;
+
+        if (e.shiftKey) { // Shift + Tab
+          if (document.activeElement === firstFocusableElement) {
+            lastFocusableElement.focus();
+            e.preventDefault();
+          }
+        } else { // Tab
+          if (document.activeElement === lastFocusableElement) {
+            firstFocusableElement.focus();
+            e.preventDefault();
+          }
+        }
+      }
+
+      element.addEventListener('keydown', handleKeyDown);
+      firstFocusableElement?.focus();
+
+      return () => element.removeEventListener('keydown', handleKeyDown);
+    },
+
     // =========================
     // INITIALIZATION
     // =========================
@@ -17,6 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
       this.lightbox.init();
       this.menu.init();
       this.cart.init();
+      this.favorites.init();
     },
 
     // =========================
@@ -59,6 +168,12 @@ document.addEventListener('DOMContentLoaded', () => {
         cartItemsContainer: document.getElementById('cart-items-container'),
         cartTotalPrice: document.getElementById('cart-total-price'),
         checkoutBtn: document.querySelector('.checkout-btn'),
+        favoritesIcon: document.getElementById('favorites-icon'),
+        favoritesCount: document.getElementById('favorites-count'),
+        favoritesSidebar: document.getElementById('favorites-sidebar'),
+        favoritesOverlay: document.getElementById('favorites-overlay'),
+        closeFavoritesBtn: document.getElementById('close-favorites'),
+        favoritesItemsContainer: document.getElementById('favorites-items-container'),
         reviewSliderWrapper: document.querySelector('.review-slider .swiper-wrapper'),
         lightbox: {
           overlay: document.querySelector('.lightbox-overlay'),
@@ -86,6 +201,16 @@ document.addEventListener('DOMContentLoaded', () => {
           this.cart.addItem(item);
           this.ui.showToast(`${item.name} added to cart!`);
         }
+
+        if (e.target.matches('.add-to-favorites-btn')) {
+          const item = {
+            id: e.target.dataset.id,
+            name: e.target.dataset.name,
+            price: parseFloat(e.target.dataset.price),
+            image: e.target.dataset.image,
+          };
+          this.favorites.toggleItem(item, e.target);
+        }
       });
     },
 
@@ -95,10 +220,10 @@ document.addEventListener('DOMContentLoaded', () => {
     navbar: {
       init() {
         app.dom.menu.onclick = () => this.toggle();
-        window.addEventListener('scroll', () => {
+        window.addEventListener('scroll', app.throttle(() => {
           this.hide();
           this.updateActiveLinkOnScroll();
-        });
+        }, 100));
       },
       toggle() {
         app.dom.menu.classList.toggle('fa-times');
@@ -130,6 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
     search: {
       availableKeywords: [],
       currentFocus: -1,
+      removeFocusTrap: null,
 
       init() {
         this.generateKeywords();
@@ -154,12 +280,13 @@ document.addEventListener('DOMContentLoaded', () => {
           this.performSearch(app.dom.searchBox.value);
         } else {
           app.dom.searchForm.classList.add('active');
-          app.dom.searchBox.focus();
+          this.removeFocusTrap = app.focusTrap(app.dom.searchForm, () => this.close());
         }
       },
 
       close() {
         app.dom.searchForm.classList.remove('active');
+        if (this.removeFocusTrap) this.removeFocusTrap();
         app.dom.searchBox.value = '';
         this.closeAllLists();
         this.hideNoResultsMessage();
@@ -380,7 +507,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (app.dom.darkModeToggle) {
           app.dom.darkModeToggle.addEventListener('click', () => this.toggleTheme());
         }
-        window.addEventListener('scroll', () => this.toggleBackToTopButton());
+        window.addEventListener('scroll', app.throttle(() => this.toggleBackToTopButton(), 200));
       },
       toggleBackToTopButton() {
         if (window.scrollY > 300) {
@@ -435,6 +562,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // FORMS MODULE
     // =========================
     forms: {
+      removeFocusTrap: null,
       init() {
         if (app.dom.orderForm) {
           app.dom.orderForm.addEventListener('submit', this.validateOrderForm);
@@ -495,9 +623,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const { userIcon, userFormContainer, closeLoginForm, loginForm, signupForm, showSignupLink, showLoginLink } = app.dom;
         if (!userIcon || !userFormContainer) return;
 
-        userIcon.onclick = () => userFormContainer.classList.add('active');
+        userIcon.onclick = () => {
+          userFormContainer.classList.add('active');
+          this.removeFocusTrap = app.focusTrap(userFormContainer, closeForm);
+        };
         const closeForm = () => {
           userFormContainer.classList.remove('active');
+          if (this.removeFocusTrap) this.removeFocusTrap();
           loginForm.reset();
           signupForm.reset();
           loginForm.style.display = 'block';
@@ -635,11 +767,12 @@ document.addEventListener('DOMContentLoaded', () => {
       },
 
       createMenuItemHTML(item) {
+        const isFavorite = app.favorites.isFavorite(item.id);
         return `
           <div class="box">
             <div class="image">
               <img src="${item.image}" data-large-src="${item.image}" alt="${item.name}" class="menu-item-image">
-              <a href="#" class="fas fa-heart" aria-label="Add to favorites"></a>
+              <button class="fas fa-heart add-to-favorites-btn ${isFavorite ? 'active' : ''}" aria-label="Add to favorites" data-id="${item.id}" data-name="${item.name}" data-price="${item.price}" data-image="${item.image}"></button>
             </div>
             <div class="content">
               <div class="stars">
@@ -671,6 +804,7 @@ document.addEventListener('DOMContentLoaded', () => {
     lightbox: {
       currentImageIndex: 0,
       galleryImages: [],
+      removeFocusTrap: null,
 
       init() {
         const { overlay, close, next, prev } = app.dom.lightbox;
@@ -701,11 +835,13 @@ document.addEventListener('DOMContentLoaded', () => {
       open(imageSrc) {
         app.dom.lightbox.image.src = imageSrc;
         app.dom.lightbox.overlay.classList.add('active');
+        this.removeFocusTrap = app.focusTrap(app.dom.lightbox.overlay, () => this.close());
         document.body.style.overflow = 'hidden';
       },
 
       close() {
         app.dom.lightbox.overlay.classList.remove('active');
+        if (this.removeFocusTrap) this.removeFocusTrap();
         document.body.style.overflow = '';
       },
 
@@ -725,6 +861,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================
     cart: {
       items: [],
+      removeFocusTrap: null,
       init() {
         this.loadFromStorage();
         app.dom.cartIcon.addEventListener('click', () => this.toggle());
@@ -746,8 +883,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       },
       toggle() {
-        app.dom.cartSidebar.classList.toggle('active');
+        const isActive = app.dom.cartSidebar.classList.toggle('active');
         app.dom.cartOverlay.classList.toggle('active');
+        if (isActive) {
+          this.removeFocusTrap = app.focusTrap(app.dom.cartSidebar, () => this.toggle());
+        } else {
+          if (this.removeFocusTrap) this.removeFocusTrap();
+        }
       },
       addItem(itemToAdd) {
         const existingItem = this.items.find(item => item.id === itemToAdd.id);
@@ -827,61 +969,92 @@ document.addEventListener('DOMContentLoaded', () => {
         this.toggle(); // Close the cart
       },
     },
+
+    // =========================
+    // FAVORITES MODULE
+    // =========================
+    favorites: {
+      items: [],
+      removeFocusTrap: null,
+      init() {
+        this.loadFromStorage();
+        app.dom.favoritesIcon.addEventListener('click', (e) => { e.preventDefault(); this.toggle(); });
+        app.dom.closeFavoritesBtn.addEventListener('click', () => this.toggle());
+        app.dom.favoritesOverlay.addEventListener('click', () => this.toggle());
+        app.dom.favoritesItemsContainer.addEventListener('click', (e) => {
+          if (e.target.classList.contains('favorite-item-remove')) {
+            const id = e.target.dataset.id;
+            const item = this.items.find(i => i.id === id);
+            if (item) this.toggleItem(item);
+          }
+        });
+      },
+      toggle() {
+        const isActive = app.dom.favoritesSidebar.classList.toggle('active');
+        app.dom.favoritesOverlay.classList.toggle('active');
+        if (isActive) {
+          this.removeFocusTrap = app.focusTrap(app.dom.favoritesSidebar, () => this.toggle());
+        } else {
+          if (this.removeFocusTrap) this.removeFocusTrap();
+        }
+      },
+      toggleItem(itemToAdd, buttonElement) {
+        const existingItemIndex = this.items.findIndex(item => item.id === itemToAdd.id);
+        const heartIcon = buttonElement || document.querySelector(`.add-to-favorites-btn[data-id='${itemToAdd.id}']`);
+
+        if (existingItemIndex > -1) {
+          this.items.splice(existingItemIndex, 1);
+          app.ui.showToast(`${itemToAdd.name} removed from favorites.`);
+          if (heartIcon) heartIcon.classList.remove('active');
+        } else {
+          this.items.push({ ...itemToAdd });
+          app.ui.showToast(`${itemToAdd.name} added to favorites!`);
+          if (heartIcon) heartIcon.classList.add('active');
+        }
+        this.render();
+        this.saveToStorage();
+      },
+      isFavorite(id) {
+        return this.items.some(item => item.id === id);
+      },
+      render() {
+        if (this.items.length === 0) {
+          app.dom.favoritesItemsContainer.innerHTML = '<p class="favorites-empty">You have no favorite items.</p>';
+        } else {
+          app.dom.favoritesItemsContainer.innerHTML = this.items.map(item => `
+            <div class="favorite-item">
+              <img src="${item.image}" alt="${item.name}">
+              <div class="favorite-item-details">
+                <h4>${item.name}</h4>
+                <p>$${item.price.toFixed(2)}</p>
+              </div>
+              <div class="favorite-item-actions">
+                <button class="btn add-to-cart-btn" data-id="${item.id}" data-name="${item.name}" data-price="${item.price}" data-image="${item.image}">Add to Cart</button>
+                <button class="favorite-item-remove" data-id="${item.id}">&times;</button>
+              </div>
+            </div>
+          `).join('');
+        }
+        this.updateFavoritesIcon();
+      },
+      updateFavoritesIcon() {
+        const totalItems = this.items.length;
+        app.dom.favoritesCount.textContent = totalItems;
+        app.dom.favoritesCount.style.display = totalItems > 0 ? 'flex' : 'none';
+      },
+      saveToStorage() {
+        localStorage.setItem('restoFavorites', JSON.stringify(this.items));
+      },
+      loadFromStorage() {
+        const storedFavorites = localStorage.getItem('restoFavorites');
+        if (storedFavorites) {
+          this.items = JSON.parse(storedFavorites);
+        }
+        this.render();
+      },
+    },
   };
 
   app.init();
 
 });
-
-
-
-const menuData = [
-  { id: "menu-1", name: "beef steak", price: 22.99, image: "menu-1.jpg", description: "Tender grilled beef steak cooked to perfection with aromatic herbs.", category: "speciality" },
-  { id: "menu-2", name: "salmon fillet", price: 19.99, image: "menu-2.jpg", description: "Fresh salmon fillet grilled with lemon butter and seasonal vegetables.", category: "speciality" },
-  { id: "menu-3", name: "mushroom risotto", price: 16.99, image: "menu-3.jpg", description: "Creamy risotto with wild mushrooms and parmesan cheese.", category: "speciality" },
-  { id: "menu-4", name: "lamb chops", price: 25.99, image: "menu-4.jpg", description: "Succulent lamb chops marinated in Mediterranean spices.", category: "speciality" },
-  { id: "menu-5", name: "chicken wings", price: 13.99, image: "menu-5.jpg", description: "Crispy buffalo wings served with blue cheese dipping sauce.", category: "speciality" },
-  { id: "menu-6", name: "shrimp scampi", price: 18.99, image: "menu-6.jpg", description: "Garlic butter shrimp served over linguine pasta with white wine.", category: "speciality" },
-  { id: "menu-7", name: "caesar salad", price: 11.99, image: "menu-7.jpg", description: "Fresh romaine lettuce with croutons, parmesan and caesar dressing.", category: "speciality" },
-  { id: "menu-8", name: "tiramisu", price: 8.99, image: "menu-8.jpg", description: "Classic Italian dessert with coffee-soaked ladyfingers and mascarpone.", category: "speciality" },
-  { id: "menu-9", name: "lobster tail", price: 32.99, image: "menu-9.jpg", description: "Butter-poached lobster tail served with drawn butter and herbs.", category: "speciality" },
-  { id: "menu-10", name: "Butter Chicken", price: 17.99, image: "menu-10.jpg", description: "Tender chicken in a creamy, spiced tomato and butter sauce.", category: "extra" },
-  { id: "menu-11", name: "Palak Paneer", price: 15.99, image: "menu-11.jpg", description: "Indian cottage cheese cubes in a smooth, creamy spinach gravy.", category: "extra" },
-  { id: "menu-12", name: "Chole Bhature", price: 14.99, image: "menu-12.jpg", description: "Spicy chickpea curry served with fluffy, deep-fried bread.", category: "extra" },
-  { id: "menu-13", name: "Masala Dosa", price: 12.99, image: "menu-13.jpg", description: "Crispy rice crepe filled with a savory spiced potato mixture.", category: "extra" },
-  { id: "menu-14", name: "Idli Sambar", price: 10.99, image: "menu-14.jpg", description: "Steamed rice cakes served with a tangy lentil-vegetable stew.", category: "extra" },
-  { id: "menu-15", name: "Hyderabadi Biryani", price: 18.99, image: "menu-15.jpg", description: "Aromatic basmati rice and meat/veg cooked with saffron and spices.", category: "extra" }
-];
-
-const reviewData = [
-    {
-        name: "sarah johnson",
-        image: "pic-1.png",
-        date: "October 26, 2023",
-        text: "Amazing dining experience! The food quality is outstanding and the service is exceptional. I particularly loved the salmon fillet - it was cooked to perfection. Will definitely be coming back with family and friends."
-    },
-    {
-        name: "mike chen",
-        image: "pic-2.png",
-        date: "October 22, 2023",
-        text: "Best restaurant in town! The beef steak was incredibly tender and flavorful. The atmosphere is perfect for both casual dining and special occasions. Fast delivery service and friendly staff make it even better."
-    },
-    {
-        name: "emma davis",
-        image: "pic-3.png",
-        date: "October 19, 2023",
-        text: "Excellent food and presentation! I ordered the mushroom risotto and it exceeded all expectations. The ingredients are fresh, portions are generous, and prices are very reasonable. Highly recommend this place!"
-    },
-    {
-        name: "alex martinez",
-        image: "pic-4.png",
-        date: "October 15, 2023",
-        text: "Outstanding culinary experience! The variety of dishes is impressive and everything tastes authentic. The tiramisu for dessert was absolutely divine. Great value for money and excellent customer service throughout."
-    },
-    {
-        name: "david lee",
-        image: "pic-1.png",
-        date: "October 12, 2023",
-        text: "A hidden gem! The Chole Bhature was authentic and delicious. The service was quick and the staff was very friendly. It's my new go-to spot for Indian food. Can't wait to try more from their menu."
-    }
-];
