@@ -32,6 +32,9 @@
         <i class="fas fa-moon" id="darkModeToggle"></i>
         <a href="#" class="fas fa-user" aria-label="User Account"></a>
         <i class="fas fa-search" id="search-icon"></i>
+        <a href="#" class="fas fa-heart" id="favorites-icon" aria-label="Favorites">
+          <span id="favorites-count">0</span>
+        </a>
         <a href="#" class="fas fa-shopping-cart" id="cart-icon" aria-label="Shopping Cart">
           <span id="cart-count">0</span>
         </a>
@@ -139,7 +142,7 @@
     <h1 class="heading">popular dishes</h1>
     <div class="box-container">
       <div class="box">
-        <a href="#" class="fas fa-heart" aria-label="Add to favorites"></a>
+        <button class="fas fa-heart add-to-favorites-btn" aria-label="Add to favorites" data-id="dish-1" data-name="grilled burger" data-price="15.99" data-image="dish-1.png"></button>
         <a href="#" class="fas fa-eye" aria-label="View details"></a>
         <img src="dish-1.png" alt="Grilled Burger">
         <h3>grilled burger</h3>
@@ -150,7 +153,7 @@
         <button class="btn add-to-cart-btn" data-id="dish-1" data-name="grilled burger" data-price="15.99" data-image="dish-1.png">add to cart</button>
       </div>
       <div class="box">
-        <a href="#" class="fas fa-heart" aria-label="Add to favorites"></a>
+        <button class="fas fa-heart add-to-favorites-btn" aria-label="Add to favorites" data-id="dish-2" data-name="pasta alfredo" data-price="18.99" data-image="dish-2.png"></button>
         <a href="#" class="fas fa-eye" aria-label="View details"></a>
         <img src="dish-2.png" alt="Pasta Alfredo">
         <h3>pasta alfredo</h3>
@@ -161,7 +164,7 @@
         <button class="btn add-to-cart-btn" data-id="dish-2" data-name="pasta alfredo" data-price="18.99" data-image="dish-2.png">add to cart</button>
       </div>
       <div class="box">
-        <a href="#" class="fas fa-heart" aria-label="Add to favorites"></a>
+        <button class="fas fa-heart add-to-favorites-btn" aria-label="Add to favorites" data-id="dish-3" data-name="seafood platter" data-price="24.99" data-image="dish-3.png"></button>
         <a href="#" class="fas fa-eye" aria-label="View details"></a>
         <img src="dish-3.png" alt="Seafood Platter">
         <h3>seafood platter</h3>
@@ -172,7 +175,7 @@
         <button class="btn add-to-cart-btn" data-id="dish-3" data-name="seafood platter" data-price="24.99" data-image="dish-3.png">add to cart</button>
       </div>
       <div class="box">
-        <a href="#" class="fas fa-heart" aria-label="Add to favorites"></a>
+        <button class="fas fa-heart add-to-favorites-btn" aria-label="Add to favorites" data-id="dish-4" data-name="chicken curry" data-price="16.99" data-image="dish-4.png"></button>
         <a href="#" class="fas fa-eye" aria-label="View details"></a>
         <img src="dish-4.png" alt="Chicken Curry">
         <h3>chicken curry</h3>
@@ -183,7 +186,7 @@
         <button class="btn add-to-cart-btn" data-id="dish-4" data-name="chicken curry" data-price="16.99" data-image="dish-4.png">add to cart</button>
       </div>
       <div class="box">
-        <a href="#" class="fas fa-heart" aria-label="Add to favorites"></a>
+        <button class="fas fa-heart add-to-favorites-btn" aria-label="Add to favorites" data-id="dish-5" data-name="veggie salad" data-price="12.99" data-image="dish-5.png"></button>
         <a href="#" class="fas fa-eye" aria-label="View details"></a>
         <img src="dish-5.png" alt="Veggie Salad">
         <h3>veggie salad</h3>
@@ -194,7 +197,7 @@
         <button class="btn add-to-cart-btn" data-id="dish-5" data-name="veggie salad" data-price="12.99" data-image="dish-5.png">add to cart</button>
       </div>
       <div class="box">
-        <a href="#" class="fas fa-heart" aria-label="Add to favorites"></a>
+        <button class="fas fa-heart add-to-favorites-btn" aria-label="Add to favorites" data-id="dish-6" data-name="chocolate cake" data-price="8.99" data-image="dish-6.png"></button>
         <a href="#" class="fas fa-eye" aria-label="View details"></a>
         <img src="dish-6.png" alt="Chocolate Cake">
         <h3>chocolate cake</h3>
@@ -385,19 +388,19 @@
   <!-- Lightbox Structure -->
   <div class="lightbox-overlay">
     <div class="lightbox-content">
-      <i class="fas fa-times lightbox-close"></i>
-      <i class="fas fa-chevron-left lightbox-prev"></i>
+      <button class="fas fa-times lightbox-close" aria-label="Close lightbox"></button>
+      <button class="fas fa-chevron-left lightbox-prev" aria-label="Previous image"></button>
       <img src="" alt="Enlarged menu item" class="lightbox-image">
-      <i class="fas fa-chevron-right lightbox-next"></i>
+      <button class="fas fa-chevron-right lightbox-next" aria-label="Next image"></button>
     </div>
   </div>
 
   <!-- Cart Sidebar -->
   <div class="cart-overlay" id="cart-overlay"></div>
-  <div class="cart-sidebar" id="cart-sidebar">
+  <div class="cart-sidebar" id="cart-sidebar" role="dialog" aria-modal="true" aria-labelledby="cart-heading">
     <div class="cart-header">
-      <h3>Your Cart</h3>
-      <i class="fas fa-times" id="close-cart"></i>
+      <h3 id="cart-heading">Your Cart</h3>
+      <button class="fas fa-times" id="close-cart" aria-label="Close cart"></button>
     </div>
     <div class="cart-items" id="cart-items-container">
       <!-- Cart items will be injected here by JS -->
@@ -409,6 +412,19 @@
         <span id="cart-total-price">$0.00</span>
       </div>
       <button class="btn checkout-btn">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- Favorites Sidebar -->
+  <div class="favorites-overlay" id="favorites-overlay"></div>
+  <div class="favorites-sidebar" id="favorites-sidebar" role="dialog" aria-modal="true" aria-labelledby="favorites-heading">
+    <div class="favorites-header">
+      <h3 id="favorites-heading">Your Favorites</h3>
+      <button class="fas fa-times" id="close-favorites" aria-label="Close favorites"></button>
+    </div>
+    <div class="favorites-items" id="favorites-items-container">
+      <!-- Favorite items will be injected here by JS -->
+      <p class="favorites-empty">You have no favorite items.</p>
     </div>
   </div>
 
@@ -424,6 +440,7 @@
 
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <!-- custom js file link -->
+  <script src="data.js"></script>
   <script src="script.js"></script>
 </body>
 
