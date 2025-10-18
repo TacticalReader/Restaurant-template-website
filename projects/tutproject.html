@@ -408,8 +408,11 @@
     </div>
     <div class="cart-footer">
       <div class="cart-total">
-        <span>Total:</span>
-        <span id="cart-total-price">$0.00</span>
+        <div class="total-price">
+          <span>Total:</span>
+          <span id="cart-total-price">$0.00</span>
+        </div>
+        <button class="clear-cart-btn" id="clear-cart-btn">Clear Cart</button>
       </div>
       <button class="btn checkout-btn">Proceed to Checkout</button>
     </div>
@@ -420,7 +423,10 @@
   <div class="favorites-sidebar" id="favorites-sidebar" role="dialog" aria-modal="true" aria-labelledby="favorites-heading">
     <div class="favorites-header">
       <h3 id="favorites-heading">Your Favorites</h3>
-      <button class="fas fa-times" id="close-favorites" aria-label="Close favorites"></button>
+      <div>
+        <button class="clear-favorites-btn" id="clear-favorites-btn">Clear All</button>
+        <button class="fas fa-times" id="close-favorites" aria-label="Close favorites"></button>
+      </div>
     </div>
     <div class="favorites-items" id="favorites-items-container">
       <!-- Favorite items will be injected here by JS -->
@@ -440,8 +446,8 @@
 
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <!-- custom js file link -->
-  <script src="data.js"></script>
-  <script src="script.js"></script>
+  <script src="data.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 
 </html>
