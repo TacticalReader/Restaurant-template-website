@@ -680,6 +680,11 @@ header .flex .icons #menu-bars {
   object-fit: cover;
 }
 
+.review .slide .user .user-info {
+  display: flex;
+  flex-direction: column;
+}
+
 .review .slide .user h3 {
   color: var(--primary-text);
   font-size: 2rem;
@@ -689,6 +694,21 @@ header .flex .icons #menu-bars {
 .review .slide .user i {
   font-size: 1.3rem;
   color: var(--green);
+}
+
+.review .slide .user .review-date {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+  color: var(--secondary-text);
+  margin-top: 0.5rem;
+  text-transform: none;
+}
+
+.review .slide .user .review-date i {
+  color: var(--green);
+  font-size: 1.2rem;
 }
 
 .review .slide p {
