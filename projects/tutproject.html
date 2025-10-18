@@ -32,7 +32,9 @@
         <i class="fas fa-moon" id="darkModeToggle"></i>
         <a href="#" class="fas fa-user" aria-label="User Account"></a>
         <i class="fas fa-search" id="search-icon"></i>
-        <a href="#" class="fas fa-shopping-cart" aria-label="Shopping Cart"></a>
+        <a href="#" class="fas fa-shopping-cart" id="cart-icon" aria-label="Shopping Cart">
+          <span id="cart-count">0</span>
+        </a>
         <i class="fas fa-bars" id="menu-bars"></i>
       </div>
     </section>
@@ -145,7 +147,7 @@
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
         </div>
         <span>$15.99</span>
-        <a href="#" class="btn">add to cart</a>
+        <button class="btn add-to-cart-btn" data-id="dish-1" data-name="grilled burger" data-price="15.99" data-image="dish-1.png">add to cart</button>
       </div>
       <div class="box">
         <a href="#" class="fas fa-heart" aria-label="Add to favorites"></a>
@@ -156,7 +158,7 @@
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
         </div>
         <span>$18.99</span>
-        <a href="#" class="btn">add to cart</a>
+        <button class="btn add-to-cart-btn" data-id="dish-2" data-name="pasta alfredo" data-price="18.99" data-image="dish-2.png">add to cart</button>
       </div>
       <div class="box">
         <a href="#" class="fas fa-heart" aria-label="Add to favorites"></a>
@@ -167,7 +169,7 @@
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
         </div>
         <span>$24.99</span>
-        <a href="#" class="btn">add to cart</a>
+        <button class="btn add-to-cart-btn" data-id="dish-3" data-name="seafood platter" data-price="24.99" data-image="dish-3.png">add to cart</button>
       </div>
       <div class="box">
         <a href="#" class="fas fa-heart" aria-label="Add to favorites"></a>
@@ -178,7 +180,7 @@
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
         </div>
         <span>$16.99</span>
-        <a href="#" class="btn">add to cart</a>
+        <button class="btn add-to-cart-btn" data-id="dish-4" data-name="chicken curry" data-price="16.99" data-image="dish-4.png">add to cart</button>
       </div>
       <div class="box">
         <a href="#" class="fas fa-heart" aria-label="Add to favorites"></a>
@@ -189,7 +191,7 @@
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
         </div>
         <span>$12.99</span>
-        <a href="#" class="btn">add to cart</a>
+        <button class="btn add-to-cart-btn" data-id="dish-5" data-name="veggie salad" data-price="12.99" data-image="dish-5.png">add to cart</button>
       </div>
       <div class="box">
         <a href="#" class="fas fa-heart" aria-label="Add to favorites"></a>
@@ -200,7 +202,7 @@
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
         </div>
         <span>$8.99</span>
-        <a href="#" class="btn">add to cart</a>
+        <button class="btn add-to-cart-btn" data-id="dish-6" data-name="chocolate cake" data-price="8.99" data-image="dish-6.png">add to cart</button>
       </div>
     </div>
   </section>
@@ -243,233 +245,7 @@
     <h3 class="sub-heading">our menu</h3>
     <h1 class="heading">today's speciality</h1>
     <div class="box-container">
-      <div class="box">
-        <div class="image">
-          <img src="menu-1.jpg" data-large-src="menu-1.jpg" alt="Beef Steak" class="menu-item-image">
-          <a href="#" class="fas fa-heart" aria-label="Add to favorites"></a>
-        </div>
-        <div class="content">
-          <div class="stars">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-          </div>
-          <h3>beef steak</h3>
-          <p>Tender grilled beef steak cooked to perfection with aromatic herbs.</p>
-          <a href="#" class="btn">add to cart</a>
-          <span class="price">$22.99</span>
-        </div>
-      </div>
-      <div class="box">
-        <div class="image">
-          <img src="menu-2.jpg" data-large-src="menu-2.jpg" alt="Salmon Fillet" class="menu-item-image">
-          <a href="#" class="fas fa-heart" aria-label="Add to favorites"></a>
-        </div>
-        <div class="content">
-          <div class="stars">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-          </div>
-          <h3>salmon fillet</h3>
-          <p>Fresh salmon fillet grilled with lemon butter and seasonal vegetables.</p>
-          <a href="#" class="btn">add to cart</a>
-          <span class="price">$19.99</span>
-        </div>
-      </div>
-      <div class="box">
-        <div class="image">
-          <img src="menu-3.jpg" data-large-src="menu-3.jpg" alt="Mushroom Risotto" class="menu-item-image">
-          <a href="#" class="fas fa-heart" aria-label="Add to favorites"></a>
-        </div>
-        <div class="content">
-          <div class="stars">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-          </div>
-          <h3>mushroom risotto</h3>
-          <p>Creamy risotto with wild mushrooms and parmesan cheese.</p>
-          <a href="#" class="btn">add to cart</a>
-          <span class="price">$16.99</span>
-        </div>
-      </div>
-      <div class="box">
-        <div class="image">
-          <img src="menu-4.jpg" data-large-src="menu-4.jpg" alt="Lamb Chops" class="menu-item-image">
-          <a href="#" class="fas fa-heart" aria-label="Add to favorites"></a>
-        </div>
-        <div class="content">
-          <div class="stars">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-          </div>
-          <h3>lamb chops</h3>
-          <p>Succulent lamb chops marinated in Mediterranean spices.</p>
-          <a href="#" class="btn">add to cart</a>
-          <span class="price">$25.99</span>
-        </div>
-      </div>
-      <div class="box">
-        <div class="image">
-          <img src="menu-5.jpg" data-large-src="menu-5.jpg" alt="Chicken Wings" class="menu-item-image">
-          <a href="#" class="fas fa-heart" aria-label="Add to favorites"></a>
-        </div>
-        <div class="content">
-          <div class="stars">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-          </div>
-          <h3>chicken wings</h3>
-          <p>Crispy buffalo wings served with blue cheese dipping sauce.</p>
-          <a href="#" class="btn">add to cart</a>
-          <span class="price">$13.99</span>
-        </div>
-      </div>
-      <div class="box">
-        <div class="image">
-          <img src="menu-6.jpg" data-large-src="menu-6.jpg" alt="Shrimp Scampi" class="menu-item-image">
-          <a href="#" class="fas fa-heart" aria-label="Add to favorites"></a>
-        </div>
-        <div class="content">
-          <div class="stars">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-          </div>
-          <h3>shrimp scampi</h3>
-          <p>Garlic butter shrimp served over linguine pasta with white wine.</p>
-          <a href="#" class="btn">add to cart</a>
-          <span class="price">$18.99</span>
-        </div>
-      </div>
-      <div class="box">
-        <div class="image">
-          <img src="menu-7.jpg" data-large-src="menu-7.jpg" alt="Caesar Salad" class="menu-item-image">
-          <a href="#" class="fas fa-heart" aria-label="Add to favorites"></a>
-        </div>
-        <div class="content">
-          <div class="stars">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-          </div>
-          <h3>caesar salad</h3>
-          <p>Fresh romaine lettuce with croutons, parmesan and caesar dressing.</p>
-          <a href="#" class="btn">add to cart</a>
-          <span class="price">$11.99</span>
-        </div>
-      </div>
-      <div class="box">
-        <div class="image">
-          <img src="menu-8.jpg" data-large-src="menu-8.jpg" alt="Tiramisu" class="menu-item-image">
-          <a href="#" class="fas fa-heart" aria-label="Add to favorites"></a>
-        </div>
-        <div class="content">
-          <div class="stars">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-          </div>
-          <h3>tiramisu</h3>
-          <p>Classic Italian dessert with coffee-soaked ladyfingers and mascarpone.</p>
-          <a href="#" class="btn">add to cart</a>
-          <span class="price">$8.99</span>
-        </div>
-      </div>
-      <div class="box">
-        <div class="image">
-          <img src="menu-9.jpg" data-large-src="menu-9.jpg" alt="Lobster Tail" class="menu-item-image">
-          <a href="#" class="fas fa-heart" aria-label="Add to favorites"></a>
-        </div>
-        <div class="content">
-          <div class="stars">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-          </div>
-          <h3>lobster tail</h3>
-          <p>Butter-poached lobster tail served with drawn butter and herbs.</p>
-          <a href="#" class="btn">add to cart</a>
-          <span class="price">$32.99</span>
-        </div>
-      </div>
-      <!-- North Indian Cuisine -->
-      <div class="box extra-menu-item hidden">
-        <div class="image">
-          <img src="menu-10.jpg" data-large-src="menu-10.jpg" alt="Butter Chicken" class="menu-item-image">
-          <a href="#" class="fas fa-heart" aria-label="Add to favorites"></a>
-        </div>
-        <div class="content">
-          <div class="stars">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <h3>Butter Chicken</h3>
-          <p>Tender chicken in a creamy, spiced tomato and butter sauce.</p>
-          <a href="#" class="btn">add to cart</a>
-          <span class="price">$17.99</span>
-        </div>
-      </div>
-      <div class="box extra-menu-item hidden">
-        <div class="image">
-          <img src="menu-11.jpg" data-large-src="menu-11.jpg" alt="Palak Paneer" class="menu-item-image">
-          <a href="#" class="fas fa-heart" aria-label="Add to favorites"></a>
-        </div>
-        <div class="content">
-          <div class="stars">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-          </div>
-          <h3>Palak Paneer</h3>
-          <p>Indian cottage cheese cubes in a smooth, creamy spinach gravy.</p>
-          <a href="#" class="btn">add to cart</a>
-          <span class="price">$15.99</span>
-        </div>
-      </div>
-      <div class="box extra-menu-item hidden">
-        <div class="image">
-          <img src="menu-12.jpg" data-large-src="menu-12.jpg" alt="Chole Bhature" class="menu-item-image">
-          <a href="#" class="fas fa-heart" aria-label="Add to favorites"></a>
-        </div>
-        <div class="content">
-          <div class="stars">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-          </div>
-          <h3>Chole Bhature</h3>
-          <p>Spicy chickpea curry served with fluffy, deep-fried bread.</p>
-          <a href="#" class="btn">add to cart</a>
-          <span class="price">$14.99</span>
-        </div>
-      </div>
-      <!-- South Indian Cuisine -->
-      <div class="box extra-menu-item hidden">
-        <div class="image">
-          <img src="menu-13.jpg" data-large-src="menu-13.jpg" alt="Masala Dosa" class="menu-item-image">
-          <a href="#" class="fas fa-heart" aria-label="Add to favorites"></a>
-        </div>
-        <div class="content">
-          <div class="stars">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <h3>Masala Dosa</h3>
-          <p>Crispy rice crepe filled with a savory spiced potato mixture.</p>
-          <a href="#" class="btn">add to cart</a>
-          <span class="price">$12.99</span>
-        </div>
-      </div>
-      <div class="box extra-menu-item hidden">
-        <div class="image">
-          <img src="menu-14.jpg" data-large-src="menu-14.jpg" alt="Idli Sambar" class="menu-item-image">
-          <a href="#" class="fas fa-heart" aria-label="Add to favorites"></a>
-        </div>
-        <div class="content">
-          <div class="stars">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-          </div>
-          <h3>Idli Sambar</h3>
-          <p>Steamed rice cakes served with a tangy lentil-vegetable stew.</p>
-          <a href="#" class="btn">add to cart</a>
-          <span class="price">$10.99</span>
-        </div>
-      </div>
-      <div class="box extra-menu-item hidden">
-        <div class="image">
-          <img src="menu-15.jpg" data-large-src="menu-15.jpg" alt="Hyderabadi Biryani" class="menu-item-image">
-          <a href="#" class="fas fa-heart" aria-label="Add to favorites"></a>
-        </div>
-        <div class="content">
-          <div class="stars">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <h3>Hyderabadi Biryani</h3>
-          <p>Aromatic basmati rice and meat/veg cooked with saffron and spices.</p>
-          <a href="#" class="btn">add to cart</a>
-          <span class="price">$18.99</span>
-        </div>
-      </div>
+      <!-- Menu items will be dynamically inserted here by script.js -->
     </div>
     <div class="load-more-container">
       <a href="#" id="loadMoreBtn" class="btn">Load More <i class="fas fa-sync-alt"></i></a>
@@ -658,6 +434,29 @@
       <i class="fas fa-chevron-right lightbox-next"></i>
     </div>
   </div>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <i class="fas fa-times" id="close-cart"></i>
+    </div>
+    <div class="cart-items" id="cart-items-container">
+      <!-- Cart items will be injected here by JS -->
+      <p class="cart-empty">Your cart is empty.</p>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cart-total-price">$0.00</span>
+      </div>
+      <button class="btn checkout-btn">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
 
   <!-- loader part -->
   <div class="loader-container">
